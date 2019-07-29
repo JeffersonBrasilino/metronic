@@ -1,0 +1,48 @@
+<!-- begin:: Page -->
+<ng-container>
+	<div class="kt-grid kt-grid--hor kt-grid--root">
+		<!-- begin:: Header Mobile -->
+		<header-mobile></header-mobile>
+		<!-- end:: Header Mobile -->
+
+		<!-- begin::Body -->
+		<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
+			<!-- begin:: Aside Left -->
+			<ng-container>
+				<button class="kt-aside-close" id="kt_aside_close_btn"><i class="la la-close"></i></button>
+				<app-aside class="ng-star-inserted"></app-aside>
+				<!--<kt-aside-left></kt-aside-left>-->
+			</ng-container>
+			<!-- end:: Aside Left -->
+
+			<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
+				<!-- begin:: Header -->
+				<app-header></app-header>
+				<!-- end:: Header -->
+
+				<!-- begin:: Content -->
+				<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor">
+					<app-subheader></app-subheader>
+					<!-- begin:: Content Head -->
+					<!--<kt-subheader></kt-subheader>-->
+					<!-- end:: Content Head -->
+
+					<!-- begin:: Content Body -->
+					<div class="kt-content kt-grid__item kt-grid__item--fluid" id="kt_content">
+						<router-outlet></router-outlet>
+					</div>
+					<!-- end:: Content Body -->
+				</div>
+				<!-- end:: Content -->
+				<app-footer></app-footer>
+				<!--<kt-footer></kt-footer>-->
+			</div>
+		</div>
+		<!-- end:: Body -->
+
+		<!--	<kt-quick-panel></kt-quick-panel>
+            <kt-scroll-top></kt-scroll-top>
+            <kt-sticky-toolbar></kt-sticky-toolbar>-->
+	</div>
+</ng-container>
+<!-- end:: Page -->

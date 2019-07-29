@@ -1,0 +1,413 @@
+<div class="kt-portlet kt-portlet--mobile">
+	<div class="kt-portlet__body">
+		<!--begin: Search Form -->
+		<div class="kt-form kt-form--label-right kt-margin-t-20 kt-margin-b-10">
+			<div class="row align-items-center">
+				<div class="col-xl-8 order-2 order-xl-1">
+					<div class="row align-items-center">
+						<div class="col-md-4 kt-margin-b-20-tablet-and-mobile">
+							<div class="kt-input-icon kt-input-icon--left">
+								<input type="text" class="form-control" placeholder="Search..."
+									   id="generalSearch">
+								<span class="kt-input-icon__icon kt-input-icon__icon--left">
+							<span><i class="la la-search"></i></span>
+						</span>
+							</div>
+						</div>
+						<div class="col-md-4 kt-margin-b-20-tablet-and-mobile">
+							<div class="kt-form__group kt-form__group--inline">
+								<div class="kt-form__label">
+									<label>Status:</label>
+								</div>
+								<div class="kt-form__control">
+									<ng-select [items]="simpleItems"></ng-select>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 kt-margin-b-20-tablet-and-mobile">
+							<div class="kt-form__group kt-form__group--inline">
+								<div class="kt-form__label">
+									<label>Type:</label>
+								</div>
+								<div class="kt-form__control">
+									<ng-select [items]="simpleItems"></ng-select>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="kt-portlet__body kt-portlet__body--fit">
+			<!--begin: Datatable -->
+			<div
+				class="kt-datatable kt-datatable--default kt-datatable--brand kt-datatable--loaded">
+				<table class="kt-datatable__table" id="html_table" width="100%"
+					   style="display: block; min-height: 500px;">
+					<thead class="kt-datatable__head">
+
+					<tr class="kt-datatable__row" style="left: 0px;">
+						<th class="kt-datatable__cell kt-datatable__toggle-detail kt-datatable__cell--sort">
+							<span></span></th>
+						<th data-field="Order ID"
+							class="kt-datatable__cell kt-datatable__cell--sort"><span
+							style="width: 112px;">Order ID</span></th>
+						<th data-field="Car Make"
+							class="kt-datatable__cell kt-datatable__cell--sort"><span
+							style="width: 112px;">Car Make</span></th>
+						<th data-field="Car Model"
+							class="kt-datatable__cell kt-datatable__cell--sort kt-datatable__cell--sorted"
+							data-sort="asc"><span style="width: 112px;">Car Model<i
+							class="flaticon2-arrow-up"></i></span></th>
+						<th data-field="Color" class="kt-datatable__cell kt-datatable__cell--sort">
+							<span style="width: 112px;">Color</span></th>
+						<th data-field="Deposit Paid"
+							class="kt-datatable__cell kt-datatable__cell--sort"><span
+							style="width: 112px;">Deposit Paid</span></th>
+						<th data-field="Order Date"
+							class="kt-datatable__cell kt-datatable__cell--sort"
+							style="display: none;"><span style="width: 112px;">Order Date</span>
+						</th>
+						<th data-field="Status" data-autohide-disabled="false"
+							class="kt-datatable__cell kt-datatable__cell--sort"><span
+							style="width: 112px;">Status</span></th>
+						<th data-field="Type" data-autohide-disabled="false"
+							class="kt-datatable__cell kt-datatable__cell--sort"><span
+							style="width: 112px;">Type</span></th>
+					</tr>
+					</thead>
+					<tbody class="kt-datatable__body" style="">
+					<tr data-row="0" class="kt-datatable__row" style="left: 0px;">
+						<td class="kt-datatable__cell kt-datatable__toggle-detail"><a
+							class="kt-datatable__toggle-detail" href=""><i
+							class="fa fa-caret-right"></i></a></td>
+						<td data-field="Order ID" class="kt-datatable__cell"><span
+							style="width: 112px;">68180-882</span></td>
+						<td data-field="Car Make" class="kt-datatable__cell"><span
+							style="width: 112px;">Peugeot</span></td>
+						<td class="kt-datatable__cell--sorted kt-datatable__cell"
+							data-field="Car Model"><span style="width: 112px;">207</span></td>
+						<td data-field="Color" class="kt-datatable__cell"><span
+							style="width: 112px;">Green</span></td>
+						<td data-field="Deposit Paid" class="kt-datatable__cell"><span
+							style="width: 112px;">$39938.08</span></td>
+						<td data-field="Order Date" class="kt-datatable__cell"
+							style="display: none;"><span style="width: 112px;">2017-11-09</span>
+						</td>
+						<td data-field="Status" data-autohide-disabled="false"
+							class="kt-datatable__cell"><span style="width: 112px;"><span
+							class="kt-badge  kt-badge--success kt-badge--inline kt-badge--pill">Success</span></span>
+						</td>
+						<td data-field="Type" data-autohide-disabled="false"
+							class="kt-datatable__cell"><span style="width: 112px;"><span
+							class="kt-badge kt-badge--success kt-badge--dot"></span>&nbsp;<span
+							class="kt-font-bold kt-font-success">Direct</span></span></td>
+					</tr>
+					<tr data-row="1" class="kt-datatable__row kt-datatable__row--even"
+						style="left: 0px;">
+						<td class="kt-datatable__cell kt-datatable__toggle-detail"><a
+							class="kt-datatable__toggle-detail" href=""><i
+							class="fa fa-caret-right"></i></a></td>
+						<td data-field="Order ID" class="kt-datatable__cell"><span
+							style="width: 112px;">57297-201</span></td>
+						<td data-field="Car Make" class="kt-datatable__cell"><span
+							style="width: 112px;">Chrysler</span></td>
+						<td class="kt-datatable__cell--sorted kt-datatable__cell"
+							data-field="Car Model"><span style="width: 112px;">300C</span></td>
+						<td data-field="Color" class="kt-datatable__cell"><span
+							style="width: 112px;">Indigo</span></td>
+						<td data-field="Deposit Paid" class="kt-datatable__cell"><span
+							style="width: 112px;">$88757.67</span></td>
+						<td data-field="Order Date" class="kt-datatable__cell"
+							style="display: none;"><span style="width: 112px;">2016-09-24</span>
+						</td>
+						<td data-field="Status" data-autohide-disabled="false"
+							class="kt-datatable__cell"><span style="width: 112px;"><span
+							class="kt-badge  kt-badge--danger kt-badge--inline kt-badge--pill">Danger</span></span>
+						</td>
+						<td data-field="Type" data-autohide-disabled="false"
+							class="kt-datatable__cell"><span style="width: 112px;"><span
+							class="kt-badge kt-badge--primary kt-badge--dot"></span>&nbsp;<span
+							class="kt-font-bold kt-font-primary">Retail</span></span></td>
+					</tr>
+					<tr data-row="2" class="kt-datatable__row" style="left: 0px;">
+						<td class="kt-datatable__cell kt-datatable__toggle-detail"><a
+							class="kt-datatable__toggle-detail" href=""><i
+							class="fa fa-caret-right"></i></a></td>
+						<td data-field="Order ID" class="kt-datatable__cell"><span
+							style="width: 112px;">65977-5037</span></td>
+						<td data-field="Car Make" class="kt-datatable__cell"><span
+							style="width: 112px;">Chevrolet</span></td>
+						<td class="kt-datatable__cell--sorted kt-datatable__cell"
+							data-field="Car Model"><span style="width: 112px;">3500</span></td>
+						<td data-field="Color" class="kt-datatable__cell"><span
+							style="width: 112px;">Violet</span></td>
+						<td data-field="Deposit Paid" class="kt-datatable__cell"><span
+							style="width: 112px;">$11410.89</span></td>
+						<td data-field="Order Date" class="kt-datatable__cell"
+							style="display: none;"><span style="width: 112px;">2017-10-17</span>
+						</td>
+						<td data-field="Status" data-autohide-disabled="false"
+							class="kt-datatable__cell"><span style="width: 112px;"><span
+							class="kt-badge  kt-badge--danger kt-badge--inline kt-badge--pill">Danger</span></span>
+						</td>
+						<td data-field="Type" data-autohide-disabled="false"
+							class="kt-datatable__cell"><span style="width: 112px;"><span
+							class="kt-badge kt-badge--danger kt-badge--dot"></span>&nbsp;<span
+							class="kt-font-bold kt-font-danger">Online</span></span></td>
+					</tr>
+					<tr data-row="3" class="kt-datatable__row kt-datatable__row--even"
+						style="left: 0px;">
+						<td class="kt-datatable__cell kt-datatable__toggle-detail"><a
+							class="kt-datatable__toggle-detail" href=""><i
+							class="fa fa-caret-right"></i></a></td>
+						<td data-field="Order ID" class="kt-datatable__cell"><span
+							style="width: 112px;">36987-2632</span></td>
+						<td data-field="Car Make" class="kt-datatable__cell"><span
+							style="width: 112px;">BMW</span></td>
+						<td class="kt-datatable__cell--sorted kt-datatable__cell"
+							data-field="Car Model"><span style="width: 112px;">530</span></td>
+						<td data-field="Color" class="kt-datatable__cell"><span
+							style="width: 112px;">Purple</span></td>
+						<td data-field="Deposit Paid" class="kt-datatable__cell"><span
+							style="width: 112px;">$88325.98</span></td>
+						<td data-field="Order Date" class="kt-datatable__cell"
+							style="display: none;"><span style="width: 112px;">2016-06-26</span>
+						</td>
+						<td data-field="Status" data-autohide-disabled="false"
+							class="kt-datatable__cell"><span style="width: 112px;"><span
+							class="kt-badge  kt-badge--success kt-badge--inline kt-badge--pill">Success</span></span>
+						</td>
+						<td data-field="Type" data-autohide-disabled="false"
+							class="kt-datatable__cell"><span style="width: 112px;"><span
+							class="kt-badge kt-badge--primary kt-badge--dot"></span>&nbsp;<span
+							class="kt-font-bold kt-font-primary">Retail</span></span></td>
+					</tr>
+					<tr data-row="4" class="kt-datatable__row" style="left: 0px;">
+						<td class="kt-datatable__cell kt-datatable__toggle-detail"><a
+							class="kt-datatable__toggle-detail" href=""><i
+							class="fa fa-caret-right"></i></a></td>
+						<td data-field="Order ID" class="kt-datatable__cell"><span
+							style="width: 112px;">63868-172</span></td>
+						<td data-field="Car Make" class="kt-datatable__cell"><span
+							style="width: 112px;">Maybach</span></td>
+						<td class="kt-datatable__cell--sorted kt-datatable__cell"
+							data-field="Car Model"><span style="width: 112px;">57</span></td>
+						<td data-field="Color" class="kt-datatable__cell"><span
+							style="width: 112px;">Goldenrod</span></td>
+						<td data-field="Deposit Paid" class="kt-datatable__cell"><span
+							style="width: 112px;">$27746.98</span></td>
+						<td data-field="Order Date" class="kt-datatable__cell"
+							style="display: none;"><span style="width: 112px;">2016-09-16</span>
+						</td>
+						<td data-field="Status" data-autohide-disabled="false"
+							class="kt-datatable__cell"><span style="width: 112px;"><span
+							class="kt-badge kt-badge--brand kt-badge--inline kt-badge--pill">Pending</span></span>
+						</td>
+						<td data-field="Type" data-autohide-disabled="false"
+							class="kt-datatable__cell"><span style="width: 112px;"><span
+							class="kt-badge kt-badge--danger kt-badge--dot"></span>&nbsp;<span
+							class="kt-font-bold kt-font-danger">Online</span></span></td>
+					</tr>
+					<tr data-row="5" class="kt-datatable__row kt-datatable__row--even"
+						style="left: 0px;">
+						<td class="kt-datatable__cell kt-datatable__toggle-detail"><a
+							class="kt-datatable__toggle-detail" href=""><i
+							class="fa fa-caret-right"></i></a></td>
+						<td data-field="Order ID" class="kt-datatable__cell"><span
+							style="width: 112px;">33992-1210</span></td>
+						<td data-field="Car Make" class="kt-datatable__cell"><span
+							style="width: 112px;">BMW</span></td>
+						<td class="kt-datatable__cell--sorted kt-datatable__cell"
+							data-field="Car Model"><span style="width: 112px;">7 Series</span></td>
+						<td data-field="Color" class="kt-datatable__cell"><span
+							style="width: 112px;">Green</span></td>
+						<td data-field="Deposit Paid" class="kt-datatable__cell"><span
+							style="width: 112px;">$89144.60</span></td>
+						<td data-field="Order Date" class="kt-datatable__cell"
+							style="display: none;"><span style="width: 112px;">2017-06-02</span>
+						</td>
+						<td data-field="Status" data-autohide-disabled="false"
+							class="kt-datatable__cell"><span style="width: 112px;"><span
+							class="kt-badge  kt-badge--success kt-badge--inline kt-badge--pill">Success</span></span>
+						</td>
+						<td data-field="Type" data-autohide-disabled="false"
+							class="kt-datatable__cell"><span style="width: 112px;"><span
+							class="kt-badge kt-badge--danger kt-badge--dot"></span>&nbsp;<span
+							class="kt-font-bold kt-font-danger">Online</span></span></td>
+					</tr>
+					<tr data-row="6" class="kt-datatable__row" style="left: 0px;">
+						<td class="kt-datatable__cell kt-datatable__toggle-detail"><a
+							class="kt-datatable__toggle-detail" href=""><i
+							class="fa fa-caret-right"></i></a></td>
+						<td data-field="Order ID" class="kt-datatable__cell"><span
+							style="width: 112px;">0378-0357</span></td>
+						<td data-field="Car Make" class="kt-datatable__cell"><span
+							style="width: 112px;">Saab</span></td>
+						<td class="kt-datatable__cell--sorted kt-datatable__cell"
+							data-field="Car Model"><span style="width: 112px;">9-5</span></td>
+						<td data-field="Color" class="kt-datatable__cell"><span
+							style="width: 112px;">Teal</span></td>
+						<td data-field="Deposit Paid" class="kt-datatable__cell"><span
+							style="width: 112px;">$74919.63</span></td>
+						<td data-field="Order Date" class="kt-datatable__cell"
+							style="display: none;"><span style="width: 112px;">2017-09-21</span>
+						</td>
+						<td data-field="Status" data-autohide-disabled="false"
+							class="kt-datatable__cell"><span style="width: 112px;"><span
+							class="kt-badge  kt-badge--success kt-badge--inline kt-badge--pill">Success</span></span>
+						</td>
+						<td data-field="Type" data-autohide-disabled="false"
+							class="kt-datatable__cell"><span style="width: 112px;"><span
+							class="kt-badge kt-badge--primary kt-badge--dot"></span>&nbsp;<span
+							class="kt-font-bold kt-font-primary">Retail</span></span></td>
+					</tr>
+					<tr data-row="7" class="kt-datatable__row kt-datatable__row--even"
+						style="left: 0px;">
+						<td class="kt-datatable__cell kt-datatable__toggle-detail"><a
+							class="kt-datatable__toggle-detail" href=""><i
+							class="fa fa-caret-right"></i></a></td>
+						<td data-field="Order ID" class="kt-datatable__cell"><span
+							style="width: 112px;">64896-672</span></td>
+						<td data-field="Car Make" class="kt-datatable__cell"><span
+							style="width: 112px;">Volvo</span></td>
+						<td class="kt-datatable__cell--sorted kt-datatable__cell"
+							data-field="Car Model"><span style="width: 112px;">940</span></td>
+						<td data-field="Color" class="kt-datatable__cell"><span
+							style="width: 112px;">Violet</span></td>
+						<td data-field="Deposit Paid" class="kt-datatable__cell"><span
+							style="width: 112px;">$85460.14</span></td>
+						<td data-field="Order Date" class="kt-datatable__cell"
+							style="display: none;"><span style="width: 112px;">2016-08-09</span>
+						</td>
+						<td data-field="Status" data-autohide-disabled="false"
+							class="kt-datatable__cell"><span style="width: 112px;"><span
+							class="kt-badge  kt-badge--info kt-badge--inline kt-badge--pill">Info</span></span>
+						</td>
+						<td data-field="Type" data-autohide-disabled="false"
+							class="kt-datatable__cell"><span style="width: 112px;"><span
+							class="kt-badge kt-badge--primary kt-badge--dot"></span>&nbsp;<span
+							class="kt-font-bold kt-font-primary">Retail</span></span></td>
+					</tr>
+					<tr data-row="8" class="kt-datatable__row" style="left: 0px;">
+						<td class="kt-datatable__cell kt-datatable__toggle-detail"><a
+							class="kt-datatable__toggle-detail" href=""><i
+							class="fa fa-caret-right"></i></a></td>
+						<td data-field="Order ID" class="kt-datatable__cell"><span
+							style="width: 112px;">57261-786</span></td>
+						<td data-field="Car Make" class="kt-datatable__cell"><span
+							style="width: 112px;">Subaru</span></td>
+						<td class="kt-datatable__cell--sorted kt-datatable__cell"
+							data-field="Car Model"><span style="width: 112px;">Alcyone SVX</span>
+						</td>
+						<td data-field="Color" class="kt-datatable__cell"><span
+							style="width: 112px;">Red</span></td>
+						<td data-field="Deposit Paid" class="kt-datatable__cell"><span
+							style="width: 112px;">$58552.98</span></td>
+						<td data-field="Order Date" class="kt-datatable__cell"
+							style="display: none;"><span style="width: 112px;">2017-05-12</span>
+						</td>
+						<td data-field="Status" data-autohide-disabled="false"
+							class="kt-datatable__cell"><span style="width: 112px;"><span
+							class="kt-badge  kt-badge--primary kt-badge--inline kt-badge--pill">Canceled</span></span>
+						</td>
+						<td data-field="Type" data-autohide-disabled="false"
+							class="kt-datatable__cell"><span style="width: 112px;"><span
+							class="kt-badge kt-badge--primary kt-badge--dot"></span>&nbsp;<span
+							class="kt-font-bold kt-font-primary">Retail</span></span></td>
+					</tr>
+					<tr data-row="9" class="kt-datatable__row kt-datatable__row--even"
+						style="left: 0px;">
+						<td class="kt-datatable__cell kt-datatable__toggle-detail"><a
+							class="kt-datatable__toggle-detail" href=""><i
+							class="fa fa-caret-right"></i></a></td>
+						<td data-field="Order ID" class="kt-datatable__cell"><span
+							style="width: 112px;">34460-6006</span></td>
+						<td data-field="Car Make" class="kt-datatable__cell"><span
+							style="width: 112px;">Audi</span></td>
+						<td class="kt-datatable__cell--sorted kt-datatable__cell"
+							data-field="Car Model"><span style="width: 112px;">Allroad</span></td>
+						<td data-field="Color" class="kt-datatable__cell"><span
+							style="width: 112px;">Mauv</span></td>
+						<td data-field="Deposit Paid" class="kt-datatable__cell"><span
+							style="width: 112px;">$47394.02</span></td>
+						<td data-field="Order Date" class="kt-datatable__cell"
+							style="display: none;"><span style="width: 112px;">2016-06-21</span>
+						</td>
+						<td data-field="Status" data-autohide-disabled="false"
+							class="kt-datatable__cell"><span style="width: 112px;"><span
+							class="kt-badge  kt-badge--primary kt-badge--inline kt-badge--pill">Canceled</span></span>
+						</td>
+						<td data-field="Type" data-autohide-disabled="false"
+							class="kt-datatable__cell"><span style="width: 112px;"><span
+							class="kt-badge kt-badge--success kt-badge--dot"></span>&nbsp;<span
+							class="kt-font-bold kt-font-success">Direct</span></span></td>
+					</tr>
+					</tbody>
+				</table>
+				<div class="kt-datatable__pager kt-datatable--paging-loaded">
+					<ul class="kt-datatable__pager-nav">
+						<li><a title="First"
+							   class="kt-datatable__pager-link kt-datatable__pager-link--first kt-datatable__pager-link--disabled"
+							   data-page="1" disabled="disabled"><i class="flaticon2-fast-back"></i></a>
+						</li>
+						<li><a title="Previous"
+							   class="kt-datatable__pager-link kt-datatable__pager-link--prev kt-datatable__pager-link--disabled"
+							   data-page="1" disabled="disabled"><i class="flaticon2-back"></i></a>
+						</li>
+						<li style=""></li>
+						<li style="display: none;"><input type="text"
+														  class="kt-pager-input form-control"
+														  title="Page number"></li>
+						<li><a
+							class="kt-datatable__pager-link kt-datatable__pager-link-number kt-datatable__pager-link--active"
+							data-page="1" title="1">1</a></li>
+						<li><a class="kt-datatable__pager-link kt-datatable__pager-link-number"
+							   data-page="2" title="2">2</a></li>
+						<li><a class="kt-datatable__pager-link kt-datatable__pager-link-number"
+							   data-page="3" title="3">3</a></li>
+						<li><a class="kt-datatable__pager-link kt-datatable__pager-link-number"
+							   data-page="4" title="4">4</a></li>
+						<li><a class="kt-datatable__pager-link kt-datatable__pager-link-number"
+							   data-page="5" title="5">5</a></li>
+						<li></li>
+						<li><a title="Next"
+							   class="kt-datatable__pager-link kt-datatable__pager-link--next"
+							   data-page="2"><i class="flaticon2-next"></i></a></li>
+						<li><a title="Last"
+							   class="kt-datatable__pager-link kt-datatable__pager-link--last"
+							   data-page="15"><i class="flaticon2-fast-next"></i></a></li>
+					</ul>
+					<div class="kt-datatable__pager-info">
+						<div class="dropdown bootstrap-select kt-datatable__pager-size"
+							 style="width: 60px;"><select
+							class="selectpicker kt-datatable__pager-size" title="Select page size"
+							data-width="60px" data-selected="10" tabindex="-98">
+							<option class="bs-title-option" value=""></option>
+							<option value="10">10</option>
+							<option value="20">20</option>
+							<option value="30">30</option>
+							<option value="50">50</option>
+							<option value="100">100</option>
+						</select>
+							<button type="button" class="btn dropdown-toggle btn-light"
+									data-toggle="dropdown" role="button" title="Select page size">
+								<div class="filter-option">
+									<div class="filter-option-inner">
+										<div class="filter-option-inner-inner">10</div>
+									</div>
+								</div>
+							</button>
+							<div class="dropdown-menu " role="combobox">
+								<div class="inner show" role="listbox" aria-expanded="false"
+									 tabindex="-1">
+									<ul class="dropdown-menu inner show"></ul>
+								</div>
+							</div>
+						</div>
+						<span class="kt-datatable__pager-detail">Showing 1 - 10 of 143</span></div>
+				</div>
+			</div>
+			<!--end: Datatable -->
+		</div>
+	</div>
