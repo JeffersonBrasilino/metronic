@@ -4,13 +4,18 @@ import { CommonModule } from '@angular/common';
 
 import { AuthRoutingModule } from './auth-routing.module';
 import { SignupComponent } from './signup/signup.component';
+import { AuthComponent } from './auth.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatProgressSpinnerModule } from '@angular/material';
 
 
 @NgModule({
   declarations: [SigninComponent, SignupComponent],
   imports: [
     CommonModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+    NgbModule,
+    MatProgressSpinnerModule
   ]
 })
 export class AuthModule { }

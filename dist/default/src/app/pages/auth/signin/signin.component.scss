@@ -1,17 +1,13 @@
 @import "../../../../assets/css/demo1/pages/general/login/login-1.css";
 
-app-signin, .kt-login {
+app-auth, app-signin, .kt-login {
 	height: 100%!important;
 
 	.mat-form-field {
 		width: 100%;
-	}
-
-	// add extra right padding when displaying spinner in button
-	.kt-spinner {
-		padding-right: 3rem !important;
-	}
+    }
 };
+
 .btn-facebok{
 	background-color: #3b5998
 };
@@ -21,4 +17,12 @@ app-signin, .kt-login {
 .btn-google{
 	background-color: #dc4e41
 
+};
+
+.authModalSpinner > .modal-dialog > .modal-content{
+	align-items: center;
+};
+
+.mat-progress-spinner circle, .mat-spinner circle {
+	stroke: #fff;
 }

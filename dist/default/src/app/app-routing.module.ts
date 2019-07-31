@@ -3,6 +3,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { NotFoundPageComponent } from "./pages/not-found-page/not-found-page.component";
 import { BaseComponent } from "./layout/base/base.component";
+import { AuthComponent } from './pages/auth/auth.component';
 
 const routes: Routes = [
 	{
@@ -13,6 +14,7 @@ const routes: Routes = [
 	},
 	{
 		path: "auth",
+		component: AuthComponent,
 		loadChildren: () =>
 			import("./pages/auth/auth.module").then(m => m.AuthModule)
 	},
@@ -23,4 +25,4 @@ const routes: Routes = [
 	imports: [RouterModule.forRoot(routes)],
 	exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
