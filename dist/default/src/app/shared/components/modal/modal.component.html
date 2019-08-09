@@ -1,4 +1,4 @@
-<ng-template #defaultModal>
+<ng-template #modal>
 	<!--default modal-->
 	<div *ngIf="modalOptions.type == 'default'">
 		<div class="modal-header">
@@ -25,5 +25,25 @@
 		</div>
 	</div>
 
+	<!--custom Modal-->
+	<ng-content *ngIf="modalOptions.type == 'custom'"></ng-content>
+
 	<!--confirm Modal-->
+	<div *ngIf="modalOptions.type == 'confirm'">
+		<div class="modal-body text-center">
+			<div class="row">
+				<div class="col-12">
+					<p>{{modalOptions.message}}</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-6">
+					<button type="button" class="btn btn-primary btn-modal-confirm" (click)="confirmAction('confirm')">Sim</button>
+				</div>
+				<div class="col-6">
+					<button type="button" class="btn btn-primary btn-modal-confirm" (click)="confirmAction('decline')">Não</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </ng-template>

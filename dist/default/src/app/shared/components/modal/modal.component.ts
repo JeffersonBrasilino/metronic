@@ -1,16 +1,16 @@
 import {
-	Component,
+	Component, EventEmitter,
 	Input,
 	OnChanges,
-	OnInit,
+	OnInit, Output,
 	TemplateRef,
 	ViewChild,
 	ViewEncapsulation
 } from '@angular/core';
-import {BsModalRef, BsModalService, ModalOptions} from "ngx-bootstrap";
+import {BsModalRef, BsModalService, ModalOptions,ModalDirective} from "ngx-bootstrap";
 
 export interface ModalConfig {
-	type: 'default'|'confirm'|'loading',
+	type: 'default'|'confirm'|'loading'|'custom',
 	message?: string,
 	content?: {
 		header?: string,
@@ -36,7 +36,8 @@ export class ModalComponent implements OnChanges, OnInit {
 		},
 		modalOptions:{}
 	};
-	@ViewChild('defaultModal', {static: false}) defaultModal: TemplateRef<any>;
+	@ViewChild('modal', {static: false}) defaultModal: TemplateRef<any>;
+	@Output() modalHandler = new EventEmitter();
 	modal: BsModalRef;
 
 	constructor(
@@ -45,7 +46,6 @@ export class ModalComponent implements OnChanges, OnInit {
 	}
 
 	ngOnChanges() {
-		console.log('onChanges');
 		//this.output.emit({newValue: this.input});
 	}
 
@@ -65,4 +65,7 @@ export class ModalComponent implements OnChanges, OnInit {
 		this.modal.hide();
 	}
 
+	confirmAction(action){
+		console.log(action);
+	}
 }

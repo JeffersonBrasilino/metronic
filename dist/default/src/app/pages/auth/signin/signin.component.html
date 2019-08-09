@@ -1,4 +1,4 @@
- <!--begin::Content-->
+<!--begin::Content-->
 <!--begin::Head-->
 <div class="kt-login__head">
 	<span class="kt-login__signup-label">você é novo por aqui?</span>&nbsp;&nbsp;
@@ -21,16 +21,16 @@
 		<form class="kt-form" autocomplete="off">
 			<div class="form-group">
 				<input class="form-control" type="text" placeholder="Email" name="email"
-					autocomplete="off">
+					   autocomplete="off">
 			</div>
 			<div class="form-group">
 				<input class="form-control" type="text" placeholder="Email" name="email"
-					autocomplete="off">
+					   autocomplete="off">
 			</div>
 			<!--begin::Action-->
 			<div class="kt-login__actions">
 				<a href="javascript:;" routerLink="/auth/forgot-password"
-					class="kt-link kt-login__link-forgot">Esqueceu a senha?</a>
+				   class="kt-link kt-login__link-forgot">Esqueceu a senha?</a>
 				<button
 					(click)="openModal(content)"
 					type="button"
@@ -79,4 +79,4 @@
 	<!--end::Signin-->
 </div>
 <!--end::Body-->
- <shared-modal [modalOptions]="modalOptions"></shared-modal>
+<shared-modal [modalOptions]="modalOptions"></shared-modal>

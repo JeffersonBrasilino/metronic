@@ -13,12 +13,12 @@ export class SigninComponent implements OnInit {
 	modalOptions: ModalConfig;
 	constructor(private dr: ChangeDetectorRef) {
 		this.modalOptions = {
-			type: 'default',
-			message: 'aguarde...',
+			type: 'loading',
+			message: 'Deseja realmente logar com essas credenciais?',
 			content:{
 				header:'header',
 				footer: 'footer',
-				body: 'body'
+				body: 'patrickuino'
 			},
 			modalOptions:{backdrop: "static"}
 		}
@@ -27,5 +27,10 @@ export class SigninComponent implements OnInit {
 		setTimeout(()=>{
 			this.modal.open();
 		})
+	}
+
+	chamaFuncao(){
+		alert('chamou a funcao');
+		this.modal.close();
 	}
 }
