@@ -10,16 +10,20 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 
 import {LayoutModule} from "./layout/layout.module";
-import { AuthComponent } from './pages/auth/auth.component';
+
+import {AuthModule} from "./pages/auth/auth.module";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
-	declarations: [AppComponent,AuthComponent],
+	declarations: [AppComponent],
 	imports: [
 		BrowserAnimationsModule,
 		BrowserModule,
 		AppRoutingModule,
 		HttpClientModule,
 		LayoutModule,
+		AuthModule,
+		FormsModule
 	],
 	exports: [],
 	providers: [],

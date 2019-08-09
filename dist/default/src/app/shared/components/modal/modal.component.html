@@ -1,0 +1,29 @@
+<ng-template #defaultModal>
+	<!--default modal-->
+	<div *ngIf="modalOptions.type == 'default'">
+		<div class="modal-header">
+			<h4 class="modal-title pull-left">{{modalOptions.content.header}}</h4>
+			<button type="button" class="close pull-right" aria-label="Close" (click)="close()">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="modal-body">
+			{{modalOptions.content.body}}
+		</div>
+		<div class="modal-footer">
+			{{modalOptions.content.footer}}
+		</div>
+	</div>
+
+	<!--lading modal-->
+	<div *ngIf="modalOptions.type == 'loading'">
+
+		<div class="modal-body">
+			<mat-spinner diameter="35"></mat-spinner>
+			<br>
+			{{modalOptions.message}}
+		</div>
+	</div>
+
+	<!--confirm Modal-->
+</ng-template>

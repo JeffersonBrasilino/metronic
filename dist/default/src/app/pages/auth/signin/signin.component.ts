@@ -1,26 +1,31 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {ChangeDetectorRef, Component, OnChanges, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {ModalComponent, ModalConfig} from "../../../shared/components/modal/modal.component";
 
 @Component({
-  selector: 'app-signin',
-  templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.scss'],
-  encapsulation: ViewEncapsulation.None
+	selector: 'app-signin',
+	templateUrl: './signin.component.html',
+	styleUrls: ['./signin.component.scss'],
+	encapsulation: ViewEncapsulation.None,
 })
 export class SigninComponent implements OnInit {
 
-  submited: boolean = false;
-  constructor(private modalService: NgbModal) { }
-
-  ngOnInit() {
-  }
-
-  showLoading() {
-    alert('send login');
-  }
-  openModal() {
-    console.log('active');
-    this.submited = true;
-    //this.modalService.open(content,{centered:true,size:'sm',windowClass:'authModalSpinner', backdrop: 'static'});
-  }
+	@ViewChild(ModalComponent,{static:false}) modal: ModalComponent;
+	modalOptions: ModalConfig;
+	constructor(private dr: ChangeDetectorRef) {
+		this.modalOptions = {
+			type: 'default',
+			message: 'aguarde...',
+			content:{
+				header:'header',
+				footer: 'footer',
+				body: 'body'
+			},
+			modalOptions:{backdrop: "static"}
+		}
+	}
+	ngOnInit(): void {
+		setTimeout(()=>{
+			this.modal.open();
+		})
+	}
 }
