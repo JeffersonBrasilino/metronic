@@ -32,7 +32,7 @@
 				<a href="javascript:;" routerLink="/auth/forgot-password"
 				   class="kt-link kt-login__link-forgot">Esqueceu a senha?</a>
 				<button
-					(click)="openModal(content)"
+					(click)="openModal()"
 					type="button"
 					id="kt_login_signin_submit"
 					class="btn btn-primary btn-elevate kt-login__btn-primary"
@@ -57,7 +57,7 @@
 
 		<!--begin::Options-->
 		<div class="kt-login__options">
-			<a href="https://www.facebook.com/keenthemes/" target="_blank" class="btn
+			<a href="#" target="_blank" class="btn
 				kt-btn btn-facebook">
 				<i class="fab fa-facebook-f"></i>
 				Facebook
@@ -79,4 +79,4 @@
 	<!--end::Signin-->
 </div>
 <!--end::Body-->
-<shared-modal [modalOptions]="modalOptions"></shared-modal>
+<shared-modal [modalOptions]="modalOptions" (modalStatus)="getStatus($event)"></shared-modal>

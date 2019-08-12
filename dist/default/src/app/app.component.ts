@@ -11,7 +11,7 @@ import { NavigationEnd, Router } from '@angular/router';
 })
 export class AppComponent implements OnInit, OnDestroy {
 	// Public properties
-	title = 'Metronic';
+	title = 'Petinder';
 	private unsubscribe: Subscription[] = []; // Read more: => https://brianflove.com/2016/12/11/anguar-2-unsubscribe-observables/
 
 	/**
