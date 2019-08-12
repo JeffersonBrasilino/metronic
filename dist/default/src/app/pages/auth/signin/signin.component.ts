@@ -9,30 +9,27 @@ import {ModalComponent, ModalConfig} from "../../../shared/components/modal/moda
 })
 export class SigninComponent implements OnInit, OnChanges {
 
-	@ViewChild(ModalComponent,{static:false}) modal: ModalComponent;
-	modalOptions: ModalConfig = {
-		type: 'confirm',
-		message: 'Deseja realmente logar com essas credenciais?',
-		content:{
-			header:'header',
-			footer: 'footer',
-			body: 'patrickuino'
-		},
-		modalOptions:{backdrop: "static"}
+	@ViewChild('modal1', {static: false}) modal: ModalComponent;
+	@ViewChild('modal2', {static: false}) modal2: ModalComponent;
+	modal1Options: ModalConfig = {
+		type: "loading",
+		//message: 'Entrando...',
+		modalOptions: {backdrop: "static",keyboard:false}
 	};
 
-	constructor(private dr: ChangeDetectorRef) {}
+	constructor(private dr: ChangeDetectorRef) {
+	}
+
 	ngOnInit(): void {
 
 	}
+
 	ngOnChanges(): void {
 		console.log('mudou no signin');
 	}
 
-	openModal(){
+	openModal() {
 		this.modal.open();
 	}
-	getStatus($event){
-		console.log($event);
-	}
+
 }

@@ -40,11 +40,11 @@ export class ModalComponent implements OnChanges {
 	@ViewChild('modal', {static: false}) private defaultModal: TemplateRef<any>;
 	@Output() private modalStatus = new EventEmitter();
 	private modal: BsModalRef;
-	private _modalStatusObj = {
+	/*private _modalStatusObj = {
 		isOpened: false,
 		isClosed: false,
 		confirm: false
-	};
+	};*/
 	constructor(
 		private modalService: BsModalService,
 	) {
@@ -69,8 +69,8 @@ export class ModalComponent implements OnChanges {
 	}
 
 	private _emitEvent(event:Object){
-		this._modalStatusObj = Object.assign(this._modalStatusObj, event);
-		this.modalStatus.emit(this._modalStatusObj);
+		let eventSend  = Object.assign({}, event);
+		this.modalStatus.emit(eventSend);
 	}
 
 }
