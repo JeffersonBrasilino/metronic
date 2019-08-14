@@ -7,7 +7,7 @@ import {SignupComponent} from './signup/signup.component';
 import {MatProgressSpinnerModule} from '@angular/material';
 import {AuthComponent} from "./auth.component";
 import {SharedModule} from "../../shared/shared.module";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
 	declarations: [SigninComponent, SignupComponent,AuthComponent],
@@ -16,9 +16,9 @@ import {FormsModule} from "@angular/forms";
 		AuthRoutingModule,
 		MatProgressSpinnerModule,
 		SharedModule,
-		FormsModule
-	],
-	exports:[AuthComponent]
+		FormsModule,
+		ReactiveFormsModule
+	]
 })
 export class AuthModule {
 }
