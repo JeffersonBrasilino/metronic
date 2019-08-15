@@ -1,6 +1,7 @@
 import {ChangeDetectorRef, Component, OnChanges, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {ModalComponent, ModalConfig} from "../../../shared/components/modal/modal.component";
 import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AuthService} from "../auth.service";
 
 @Component({
 	selector: 'app-signin',
@@ -10,7 +11,10 @@ import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 export class SigninComponent implements OnInit {
 
-	constructor(private _formBuilder: FormBuilder) {
+	constructor(
+		private _formBuilder: FormBuilder,
+		private _service: AuthService
+	) {
 	}
 
 	@ViewChild('modal1', {static: false}) modal: ModalComponent;
@@ -31,11 +35,14 @@ export class SigninComponent implements OnInit {
 	}
 
 	login() {
-		this.modal.open();
+		/*this.modal.open();
 		setTimeout(() => {
 			this.modal.close();
-		}, 2000)
-		console.log(this.loginForm.value);
+		}, 1000)*/
+		this._service.hue().subscribe((hue)=>{
+			console.log('error',hue.error);
+			console.log('error',hue);
+		})
 	}
 
 }

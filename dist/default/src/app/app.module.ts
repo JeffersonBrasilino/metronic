@@ -12,7 +12,6 @@ import {AppRoutingModule} from './app-routing.module';
 import {LayoutModule} from "./layout/layout.module";
 
 import {AuthModule} from "./pages/auth/auth.module";
-import {FormsModule} from "@angular/forms";
 
 @NgModule({
 	declarations: [AppComponent],
@@ -22,8 +21,7 @@ import {FormsModule} from "@angular/forms";
 		AppRoutingModule,
 		HttpClientModule,
 		LayoutModule,
-		AuthModule,
-		FormsModule
+		AuthModule
 	],
 	exports: [],
 	providers: [],
