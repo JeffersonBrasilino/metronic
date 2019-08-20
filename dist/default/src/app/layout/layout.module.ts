@@ -14,6 +14,7 @@ import {NavigationRoutingModule} from "./navigation-routing.module";
 import {NotFoundPageComponent} from "../pages/not-found-page/not-found-page.component";
 import {LayoutPartialsModule} from "./layout-partials/layout-partials.module";
 import { SubheaderComponent } from './subheader/subheader.component';
+import {SharedModule} from "../shared/shared.module";
 
 @NgModule({
 	declarations: [
@@ -25,7 +26,7 @@ import { SubheaderComponent } from './subheader/subheader.component';
 		HeaderComponent,
 		FooterComponent,
 		NotFoundPageComponent,
-		SubheaderComponent
+		SubheaderComponent,
 	],
 	imports: [
 		CommonModule,
@@ -33,6 +34,7 @@ import { SubheaderComponent } from './subheader/subheader.component';
 		PerfectScrollbarModule,
 		InlineSVGModule,
 		NavigationRoutingModule,
+		SharedModule
 	],
 	exports: []
 })

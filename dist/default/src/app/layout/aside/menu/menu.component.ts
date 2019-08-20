@@ -1,5 +1,6 @@
 import {AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild, ViewEncapsulation} from '@angular/core';
 import {MenuOptions} from "../../layout-partials/index";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-menu',
@@ -37,9 +38,12 @@ export class MenuComponent implements OnInit,AfterViewInit {
 		}
 	};
 
-  constructor(	private render: Renderer2) { }
+  constructor(	private render: Renderer2, private _route:ActivatedRoute) { }
 
   ngOnInit() {
+  	this._route.data.subscribe((res)=>{
+  		console.log(res);
+	})
   }
 
   ngAfterViewInit(){}

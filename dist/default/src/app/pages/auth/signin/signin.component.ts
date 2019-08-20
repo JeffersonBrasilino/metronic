@@ -4,6 +4,7 @@ import {FormBuilder, Validators} from "@angular/forms";
 import {AuthService} from "../auth.service";
 import {delay, map} from "rxjs/operators";
 import {Router} from "@angular/router";
+import {LoadingBarService} from "@ngx-loading-bar/core";
 
 @Component({
 	selector: 'app-signin',
@@ -20,7 +21,8 @@ export class SigninComponent implements OnInit {
 		private _formBuilder: FormBuilder,
 		private _service: AuthService,
 		private _dr: ChangeDetectorRef,
-		private _router: Router
+		private _router: Router,
+		private _loadingBar: LoadingBarService
 	) {
 	}
 
@@ -40,7 +42,8 @@ export class SigninComponent implements OnInit {
 	}
 
 	login() {
-		this.modal.open();
+		//this.modal.open();
+		this._loadingBar.start();
 		this._service.login(this.loginForm.value)
 			.pipe(
 				delay(1000)
@@ -57,7 +60,8 @@ export class SigninComponent implements OnInit {
 				},
 				() => {
 					this._dr.markForCheck();
-					setTimeout(() => this.modal.close(), 500)
+					//setTimeout(() => this.modal.close(), 500);
+					this._loadingBar.complete()
 				}
 			);
 	}
