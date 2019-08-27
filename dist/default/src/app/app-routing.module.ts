@@ -18,9 +18,9 @@ const routes: Routes = [
 		path: "",
 		component: BaseComponent,
 		canActivate:[AuthGuard],
-		/*resolve:{
+		resolve:{
 			menu:MenuResolverService
-		},*/
+		},
 		children:[
 			{
 				path: "",

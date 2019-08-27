@@ -2,9 +2,9 @@ import {ChangeDetectorRef, Component, OnInit, ViewChild, ViewEncapsulation} from
 import {ModalComponent, ModalConfig} from "../../../shared/components/modal/modal.component";
 import {FormBuilder, Validators} from "@angular/forms";
 import {AuthService} from "../auth.service";
-import {delay, map} from "rxjs/operators";
 import {Router} from "@angular/router";
-import {LoadingBarService} from "@ngx-loading-bar/core";
+import {ModalService} from "../../../shared/components/modal/modal.service";
+import {delay} from "rxjs/operators";
 
 @Component({
 	selector: 'app-signin',
@@ -22,28 +22,19 @@ export class SigninComponent implements OnInit {
 		private _service: AuthService,
 		private _dr: ChangeDetectorRef,
 		private _router: Router,
-		private _loadingBar: LoadingBarService
+		private _modalService: ModalService
 	) {
 	}
-
-	modal1Options: ModalConfig = {
-		type: "loading",
-		message: 'Entrando...',
-		modalOptions: {backdrop: "static", keyboard: false}
-	};
 
 	loginForm = this._formBuilder.group({
 		user: ['brasilino', Validators.required],
 		password: ['jeffdrummer', Validators.required],
 	});
 
-	ngOnInit(): void {
-
-	}
+	ngOnInit(): void {}
 
 	login() {
-		//this.modal.open();
-		this._loadingBar.start();
+		this._modalService.openLoading();
 		this._service.login(this.loginForm.value)
 			.pipe(
 				delay(1000)
@@ -60,8 +51,6 @@ export class SigninComponent implements OnInit {
 				},
 				() => {
 					this._dr.markForCheck();
-					//setTimeout(() => this.modal.close(), 500);
-					this._loadingBar.complete()
 				}
 			);
 	}

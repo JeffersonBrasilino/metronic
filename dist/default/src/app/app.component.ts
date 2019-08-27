@@ -1,7 +1,9 @@
-import { Subscription } from 'rxjs';
+import {Subscription} from 'rxjs';
 // Angular
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
+import {Event, NavigationEnd, NavigationStart, Router} from '@angular/router';
+import {LoadingBarService} from "@ngx-loading-bar/core";
+import {ModalService} from "./shared/components/modal/modal.service";
 
 @Component({
 	selector: 'body[kt-root]',
@@ -12,6 +14,7 @@ import { NavigationEnd, Router } from '@angular/router';
 export class AppComponent implements OnInit, OnDestroy {
 	// Public properties
 	title = 'Petinder';
+	loading = false;
 	private unsubscribe: Subscription[] = []; // Read more: => https://brianflove.com/2016/12/11/anguar-2-unsubscribe-observables/
 
 	/**
@@ -22,7 +25,15 @@ export class AppComponent implements OnInit, OnDestroy {
 	 * @param layoutConfigService: LayoutCongifService
 	 * @param splashScreenService: SplashScreenService
 	 */
-	constructor() {
+	constructor(private modalService:ModalService,private _router: Router, private _rd: ChangeDetectorRef, private _loadingBar: LoadingBarService) {
+		this._router.events.subscribe((event: Event) => {
+			if (event instanceof NavigationStart)
+				this.modalService.chancgeOptionsModal({	message: 'carregando menu...',});
+			if (event instanceof NavigationEnd)
+				this.modalService.closeModal();
+
+			this._rd.markForCheck();
+		});
 
 		// register translations
 	}

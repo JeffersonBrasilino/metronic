@@ -1,13 +1,14 @@
 import {
 	Component, EventEmitter,
 	Input,
-	OnChanges,
+	OnChanges, OnInit,
 	Output,
 	TemplateRef,
 	ViewChild,
 	ViewEncapsulation
 } from '@angular/core';
 import {BsModalRef, BsModalService, ModalOptions} from "ngx-bootstrap";
+import {ModalService} from "./modal.service";
 
 export interface ModalConfig {
 	type: 'default' | 'confirm' | 'loading' | 'custom',
@@ -26,7 +27,7 @@ export interface ModalConfig {
 	styleUrls: ['./modal.component.scss'],
 	encapsulation: ViewEncapsulation.None
 })
-export class ModalComponent implements OnChanges {
+export class ModalComponent implements OnChanges, OnInit {
 	@Input() private modalOptions: ModalConfig = {
 		type: 'default',
 		content: {
@@ -40,17 +41,25 @@ export class ModalComponent implements OnChanges {
 	@ViewChild('modal', {static: false}) private defaultModal: TemplateRef<any>;
 	@Output() private modalStatus = new EventEmitter();
 	private modal: BsModalRef;
-	/*private _modalStatusObj = {
-		isOpened: false,
-		isClosed: false,
-		confirm: false
-	};*/
+
 	constructor(
 		private modalService: BsModalService,
+		private service: ModalService
 	) {
 	}
 
-	ngOnChanges() {}
+	ngOnInit(): void {
+		this.service.emitter.subscribe((e) => {
+			this.modalOptions = e;
+			if (e.open == true)
+				this.open();
+			if (e.close == true)
+				this.close()
+		})
+	}
+
+	ngOnChanges() {
+	}
 
 	open() {
 		this.modal = this.modalService.show(this.defaultModal, this.modalOptions.modalOptions);
@@ -68,8 +77,8 @@ export class ModalComponent implements OnChanges {
 		this._emitEvent({confirm: action});
 	}
 
-	private _emitEvent(event:Object){
-		let eventSend  = Object.assign({}, event);
+	private _emitEvent(event: Object) {
+		let eventSend = Object.assign({}, event);
 		this.modalStatus.emit(eventSend);
 	}
 
