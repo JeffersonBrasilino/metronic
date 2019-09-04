@@ -1,6 +1,13 @@
 import {Subscription} from 'rxjs';
 // Angular
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
+import {
+	ChangeDetectionStrategy,
+	ChangeDetectorRef,
+	Component,
+	OnDestroy,
+	OnInit,
+	ViewContainerRef
+} from '@angular/core';
 import {Event, NavigationEnd, NavigationStart, Router} from '@angular/router';
 import {LoadingBarService} from "@ngx-loading-bar/core";
 import {ModalService} from "./shared/components/modal/modal.service";
@@ -25,16 +32,14 @@ export class AppComponent implements OnInit, OnDestroy {
 	 * @param layoutConfigService: LayoutCongifService
 	 * @param splashScreenService: SplashScreenService
 	 */
-	constructor(private modalService:ModalService,private _router: Router, private _rd: ChangeDetectorRef, private _loadingBar: LoadingBarService) {
+	constructor(private _router: Router, private _rd: ChangeDetectorRef, private _loadingBar: LoadingBarService, private ms:ModalService) {
 		this._router.events.subscribe((event: Event) => {
-			if (event instanceof NavigationStart)
-				this.modalService.chancgeOptionsModal({	message: 'carregando menu...',});
-			if (event instanceof NavigationEnd)
-				this.modalService.closeModal();
-
+			if(event instanceof NavigationStart)
+				this._loadingBar.start();
+			if(event instanceof NavigationEnd)
+				this._loadingBar.complete();
 			this._rd.markForCheck();
 		});
-
 		// register translations
 	}
 
@@ -46,6 +51,11 @@ export class AppComponent implements OnInit, OnDestroy {
 	 * On init
 	 */
 	ngOnInit(): void {
+
+		setTimeout(()=>{
+			console.log('adicionou o modal');
+			this.ms.open();
+		},2000);
 
 	}
 

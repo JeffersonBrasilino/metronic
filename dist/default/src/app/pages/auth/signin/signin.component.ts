@@ -1,5 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
-import {ModalComponent, ModalConfig} from "../../../shared/components/modal/modal.component";
+import {ChangeDetectorRef, Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {AuthService} from "../auth.service";
 import {Router} from "@angular/router";
@@ -14,7 +13,6 @@ import {delay} from "rxjs/operators";
 })
 export class SigninComponent implements OnInit {
 
-	@ViewChild('modal1', {static: false}) modal: ModalComponent;
 	loginStatus: boolean = true;
 
 	constructor(
@@ -34,8 +32,8 @@ export class SigninComponent implements OnInit {
 	ngOnInit(): void {}
 
 	login() {
-		this._modalService.openLoading();
-		this._service.login(this.loginForm.value)
+		//this._modalService.open('dsuihsuhfiuhfuis');
+		/*this._service.login(this.loginForm.value)
 			.pipe(
 				delay(1000)
 			)
@@ -52,7 +50,7 @@ export class SigninComponent implements OnInit {
 				() => {
 					this._dr.markForCheck();
 				}
-			);
+			);*/
 	}
 
 }
