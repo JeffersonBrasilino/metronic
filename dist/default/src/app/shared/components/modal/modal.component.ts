@@ -1,24 +1,10 @@
 import {
-	Component, EventEmitter,
-	Input,
-	OnChanges, OnInit,
-	Output,
-	TemplateRef,
-	ViewChild, ViewContainerRef,
+	Component,
+	OnChanges, OnDestroy, OnInit,
+	ViewChild,
 	ViewEncapsulation
 } from '@angular/core';
-import {BsModalRef, BsModalService, ModalOptions} from "ngx-bootstrap";
-
-export interface ModalConfig {
-	type: 'default' | 'confirm' | 'loading' | 'custom',
-	message?: string,
-	content?: {
-		header?: string,
-		body?: string,
-		footer?: string
-	},
-	modalOptions?: ModalOptions | object,
-};
+import { ModalDirective} from "ngx-bootstrap";
 
 @Component({
 	selector: 'shared-modal',
@@ -26,9 +12,11 @@ export interface ModalConfig {
 	styleUrls: ['./modal.component.scss'],
 	encapsulation: ViewEncapsulation.None
 })
-export class ModalComponent implements OnChanges, OnInit {
-	public modalOptions: ModalConfig = {
+export class ModalComponent implements OnChanges, OnInit, OnDestroy {
+	@ViewChild(ModalDirective, {static: false}) modalDirective: ModalDirective;
+	public modalOptions = {
 		type: 'default',
+		message: 'aguarde...',
 		content: {
 			header: 'here`s header',
 			footer: 'here`s footer',
@@ -41,7 +29,8 @@ export class ModalComponent implements OnChanges, OnInit {
 	}
 
 	ngOnInit(): void {
-		console.log(this.modalOptions);
+		setTimeout(() => {
+		}, 2000)
 		/*this.service.emitter.subscribe((e) => {
 			this.modalOptions = e;
 			if (e.open == true)
@@ -52,6 +41,15 @@ export class ModalComponent implements OnChanges, OnInit {
 	}
 
 	ngOnChanges() {
+	}
+
+	ngOnDestroy(): void {
+		console.log('destruiu o modal');
+	}
+
+	private close() {
+		console.log('fecha');
+		this.modalDirective.hide();
 	}
 
 	/*open() {

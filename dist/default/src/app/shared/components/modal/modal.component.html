@@ -1,5 +1,5 @@
 <!--default modal-->
-<div *ngIf="modalOptions.type == 'default'">
+<div *ngIf="modalOptions.type == 'default'" bsModal #modalContainer="bs-modal">
 	<div class="modal-header">
 		<h4 class="modal-title pull-left">{{modalOptions.content.header || 'header'}}</h4>
 		<button type="button" class="close pull-right" aria-label="Close" (click)="close()">
@@ -15,7 +15,7 @@
 </div>
 
 <!--lading modal-->
-<div *ngIf="modalOptions.type == 'loading'">
+<div *ngIf="modalOptions.type == 'loading'" bsModal #modalContainer="bs-modal">
 
 	<div class="modal-body">
 		<mat-spinner diameter="35"></mat-spinner>

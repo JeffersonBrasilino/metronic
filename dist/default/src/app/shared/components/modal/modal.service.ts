@@ -1,45 +1,41 @@
 import {Injectable} from '@angular/core';
 import {ModalComponent} from "./modal.component";
-import {BsModalService} from "ngx-bootstrap";
+import {BsModalRef, BsModalService, ModalOptions} from "ngx-bootstrap";
+
+export interface ModalConfig {
+	type: 'default' | 'confirm' | 'loading' | 'custom',
+	message?: string,
+	content?: {
+		header?: string,
+		body?: string,
+		footer?: string
+	},
+	modalOptions?: ModalOptions | object,
+}
 
 @Injectable({
 	providedIn: 'root'
 })
 export class ModalService {
+	private _modalServiceInstance = [];
 	constructor(
 		private _bsModalService: BsModalService,
 	) {
-
 	}
 
-	open(){
-		this._bsModalService.show(ModalComponent);
+	open(config: ModalConfig): BsModalRef {
+		const modal = this._bsModalService.show(ModalComponent, config.modalOptions);
+		modal.content.modalOptions = config;
+		modal.setClass(config.type);
+		this._modalServiceInstance.push(modal);
+		return modal;
 	}
 
-	close(){
-
+	close(modalRef:BsModalRef) {
+		console.log(this._modalServiceInstance);
 	}
 
-	/*emitter = new EventEmitter();
-	option: any;
-	constructor() {
-		console.log('init modal service');
+	getModalInstrance(){
+		return this._modalServiceInstance;
 	}
-
-	openLoading(){
-		this.emitter.emit({
-			open: true,
-			type: "loading",
-			message: 'Entrando...',
-			modalOptions: {backdrop: "static", keyboard: false}
-		});
-	}
-
-	closeModal(){
-		this.emitter.emit({close:true});
-	}
-
-	chancgeOptionsModal(options){
-		this.emitter.emit(options);
-	}*/
 }

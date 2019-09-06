@@ -51,12 +51,7 @@ export class AppComponent implements OnInit, OnDestroy {
 	 * On init
 	 */
 	ngOnInit(): void {
-
-		setTimeout(()=>{
-			console.log('adicionou o modal');
-			this.ms.open();
-		},2000);
-
+		const modala = this.ms.open({type:"default",content:{header:'',body:'',footer:''},modalOptions:{backdrop:'static'}});
 	}
 
 	/**
