@@ -13,7 +13,6 @@ import {LayoutModule} from "./layout/layout.module";
 
 import {AuthModule} from "./pages/auth/auth.module";
 import {LoadingBarModule} from "@ngx-loading-bar/core";
-import {ModalModule} from "./shared/components/modal/modal.module";
 
 @NgModule({
 	declarations: [AppComponent],
@@ -24,8 +23,7 @@ import {ModalModule} from "./shared/components/modal/modal.module";
 		HttpClientModule,
 		LayoutModule,
 		AuthModule,
-		LoadingBarModule,
-		ModalModule
+		LoadingBarModule
 	],
 	exports: [],
 	providers: [],

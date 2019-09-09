@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {BaseHttpService} from "../../core/services/base-http.service";
 import {map, take} from "rxjs/operators";
+import {Observable} from "rxjs";
 
 @Injectable({
 	providedIn: 'root'
@@ -9,7 +10,11 @@ export class AuthService extends BaseHttpService {
 	usePath = "/auth";
 
 	login(user) {
-		return this.post('/signin', user).pipe(
+		return new Observable(
+			subscriber=>{
+				subscriber.next(true);
+			});
+		/*return this.post('/signin', user).pipe(
 			take(1),
 			map((res)=>{
 				let retorno = true;
@@ -24,6 +29,6 @@ export class AuthService extends BaseHttpService {
 				}
 				return retorno;
 			})
-		);
+		);*/
 	}
 }

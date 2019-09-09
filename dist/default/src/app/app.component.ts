@@ -5,8 +5,7 @@ import {
 	ChangeDetectorRef,
 	Component,
 	OnDestroy,
-	OnInit,
-	ViewContainerRef
+	OnInit
 } from '@angular/core';
 import {Event, NavigationEnd, NavigationStart, Router} from '@angular/router';
 import {LoadingBarService} from "@ngx-loading-bar/core";
@@ -34,10 +33,12 @@ export class AppComponent implements OnInit, OnDestroy {
 	 */
 	constructor(private _router: Router, private _rd: ChangeDetectorRef, private _loadingBar: LoadingBarService, private ms:ModalService) {
 		this._router.events.subscribe((event: Event) => {
-			if(event instanceof NavigationStart)
+			if(event instanceof NavigationStart){
 				this._loadingBar.start();
-			if(event instanceof NavigationEnd)
+			}if(event instanceof NavigationEnd){
+				this.ms.close();
 				this._loadingBar.complete();
+			}
 			this._rd.markForCheck();
 		});
 		// register translations
@@ -50,9 +51,7 @@ export class AppComponent implements OnInit, OnDestroy {
 	/**
 	 * On init
 	 */
-	ngOnInit(): void {
-		const modala = this.ms.open({type:"default",content:{header:'',body:'',footer:''},modalOptions:{backdrop:'static'}});
-	}
+	ngOnInit(): void {}
 
 	/**
 	 * On Destroy

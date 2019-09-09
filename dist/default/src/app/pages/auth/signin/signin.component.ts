@@ -32,8 +32,8 @@ export class SigninComponent implements OnInit {
 	ngOnInit(): void {}
 
 	login() {
-		//this._modalService.open('dsuihsuhfiuhfuis');
-		/*this._service.login(this.loginForm.value)
+		this._modalService.open({type:'loading',modalOptions:{backdrop:'static'}});
+		this._service.login(this.loginForm.value)
 			.pipe(
 				delay(1000)
 			)
@@ -50,7 +50,7 @@ export class SigninComponent implements OnInit {
 				() => {
 					this._dr.markForCheck();
 				}
-			);*/
+			);
 	}
 
 }
