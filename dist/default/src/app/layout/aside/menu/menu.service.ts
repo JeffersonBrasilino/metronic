@@ -6,14 +6,11 @@ import {Observable} from "rxjs";
 })
 export class MenuService {
 
-	constructor() {
-	}
+	constructor() {}
 
 	getMenu() {
 		return new Observable((ob) => {
-			setTimeout(() => {
 				ob.next({data: 'foifoififofiofiofiofiof'});
-			}, 5000)
-		})
+		});
 	}
 }

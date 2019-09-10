@@ -1,15 +1,16 @@
 import {AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild, ViewEncapsulation} from '@angular/core';
 import {MenuOptions} from "../../layout-partials/index";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
+import {filter} from "rxjs/operators";
 
 @Component({
-  selector: 'app-menu',
-  templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss'],
+	selector: 'app-menu',
+	templateUrl: './menu.component.html',
+	styleUrls: ['./menu.component.scss'],
 	encapsulation: ViewEncapsulation.None
 })
-export class MenuComponent implements OnInit,AfterViewInit {
-	@ViewChild("asideMenu",{static:false}) asideMenu: ElementRef;
+export class MenuComponent implements OnInit, AfterViewInit {
+	@ViewChild('asideMenu', {static: false}) asideMenu: ElementRef;
 
 	currentRouteUrl: string = '';
 	insideTm: any;
@@ -37,16 +38,81 @@ export class MenuComponent implements OnInit,AfterViewInit {
 			expandAll: false // allow having multiple expanded accordions in the menu
 		}
 	};
+	menu = [
+		{
+			text: "Usuários",
+			submenu: [
+				{text: 'Cadastrar', link: "/user/form"},
+				{text: 'Listar', link: "/user/list"}
+			]
+		},
+		{
+			text:'Login', link:'/auth/signin'
+		},
+		{
+			text:'Login', link:'/auth/signin'
+		},
+		{
+			text:'Login', link:'/auth/signin'
+		},
+		{
+			text:'Login', link:'/auth/signin'
+		},
+		{
+			text: "Usuários",
+			submenu: [
+				{text: 'Cadastrar', link: "/user/form"},
+				{text: 'Listar', link: "/user/list"}
+			]
+		},
+		{
+			text: "Usuários",
+			submenu: [
+				{text: 'Cadastrar', link: "/user/form"},
+				{text: 'Listar', link: "/user/list"}
+			]
+		},
+		{
+			text: "Usuários",
+			submenu: [
+				{text: 'Cadastrar', link: "/user/form"},
+				{text: 'Listar', link: "/user/list"}
+			]
+		},
+		{
+			text: "Usuários",
+			submenu: [
+				{text: 'Cadastrar', link: "/user/form"},
+				{text: 'Listar', link: "/user/list"}
+			]
+		},
+	];
 
-  constructor(	private render: Renderer2, private _route:ActivatedRoute) { }
+	constructor(private render: Renderer2, private _route: ActivatedRoute, private router: Router) {
+	}
 
-  ngOnInit() {
-  	this._route.data.subscribe((res)=>{
-  		console.log(res);
-	})
-  }
+	ngOnInit() {
 
-  ngAfterViewInit(){}
+		this.currentRouteUrl = this.router.url.split(/[?#]/)[0];
+
+		console.log(this.menu);
+		this.router.events
+			.pipe(filter(event => event instanceof NavigationEnd))
+			.subscribe(event => this.currentRouteUrl = this.router.url.split(/[?#]/)[0]);
+
+		/*if (objectPath.get(config, 'aside.menu.dropdown') !== true && objectPath.get(config, 'aside.self.fixed')) {
+			this.render.setAttribute(this.asideMenu.nativeElement, 'data-ktmenu-scroll', '1');
+		}
+
+		if (objectPath.get(config, 'aside.menu.dropdown')) {
+			this.render.setAttribute(this.asideMenu.nativeElement, 'data-ktmenu-dropdown', '1');
+			// tslint:disable-next-line:max-line-length
+			this.render.setAttribute(this.asideMenu.nativeElement, 'data-ktmenu-dropdown-timeout', objectPath.get(config, 'aside.menu.submenu.dropdown.hover-timeout'));
+		}*/
+	}
+
+	ngAfterViewInit() {
+	}
 
 	/**
 	 * Use for fixed left aside menu, to show menu on mouseenter event.

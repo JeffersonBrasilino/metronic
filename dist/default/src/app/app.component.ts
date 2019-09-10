@@ -34,6 +34,7 @@ export class AppComponent implements OnInit, OnDestroy {
 	constructor(private _router: Router, private _rd: ChangeDetectorRef, private _loadingBar: LoadingBarService, private ms:ModalService) {
 		this._router.events.subscribe((event: Event) => {
 			if(event instanceof NavigationStart){
+				/*this.ms.open({type:'loading'});*/
 				this._loadingBar.start();
 			}if(event instanceof NavigationEnd){
 				this.ms.close();
