@@ -48,44 +48,7 @@ export class MenuComponent implements OnInit, AfterViewInit {
 		},
 		{
 			text:'Login', link:'/auth/signin'
-		},
-		{
-			text:'Login', link:'/auth/signin'
-		},
-		{
-			text:'Login', link:'/auth/signin'
-		},
-		{
-			text:'Login', link:'/auth/signin'
-		},
-		{
-			text: "Usuários",
-			submenu: [
-				{text: 'Cadastrar', link: "/user/form"},
-				{text: 'Listar', link: "/user/list"}
-			]
-		},
-		{
-			text: "Usuários",
-			submenu: [
-				{text: 'Cadastrar', link: "/user/form"},
-				{text: 'Listar', link: "/user/list"}
-			]
-		},
-		{
-			text: "Usuários",
-			submenu: [
-				{text: 'Cadastrar', link: "/user/form"},
-				{text: 'Listar', link: "/user/list"}
-			]
-		},
-		{
-			text: "Usuários",
-			submenu: [
-				{text: 'Cadastrar', link: "/user/form"},
-				{text: 'Listar', link: "/user/list"}
-			]
-		},
+		}
 	];
 
 	constructor(private render: Renderer2, private _route: ActivatedRoute, private router: Router) {
@@ -94,8 +57,6 @@ export class MenuComponent implements OnInit, AfterViewInit {
 	ngOnInit() {
 
 		this.currentRouteUrl = this.router.url.split(/[?#]/)[0];
-
-		console.log(this.menu);
 		this.router.events
 			.pipe(filter(event => event instanceof NavigationEnd))
 			.subscribe(event => this.currentRouteUrl = this.router.url.split(/[?#]/)[0]);
@@ -109,6 +70,8 @@ export class MenuComponent implements OnInit, AfterViewInit {
 			// tslint:disable-next-line:max-line-length
 			this.render.setAttribute(this.asideMenu.nativeElement, 'data-ktmenu-dropdown-timeout', objectPath.get(config, 'aside.menu.submenu.dropdown.hover-timeout'));
 		}*/
+
+		console.log(this.currentRouteUrl);
 	}
 
 	ngAfterViewInit() {
