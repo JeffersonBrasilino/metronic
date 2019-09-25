@@ -5,58 +5,6 @@
 		 [perfectScrollbar]="{wheelPropagation: false}">
 		<ul class="kt-menu__nav">
 			<ng-container [ngTemplateOutlet]="listMenu"></ng-container>
-			<!--<li data-placement="right" class="kt-menu__item kt-menu__item&#45;&#45;submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a class="kt-menu__link kt-menu__toggle">
-				<i class="kt-menu__link-icon flaticon2-browser-2"></i>
-				<span class="kt-menu__link-text">Users</span>
-				<i class="kt-menu__ver-arrow la la-angle-right ng-star-inserted"></i>
-			</a>
-				<div class="kt-menu__submenu ng-star-inserted"><span class="kt-menu__arrow"></span>
-
-					<ul class="kt-menu__subnav ng-star-inserted">
-
-						<li data-placement="right"
-							class="kt-menu__item kt-menu__item&#45;&#45;submenu ng-star-inserted" aria-haspopup="true"
-							data-ktmenu-submenu-toggle="hover"><a
-							routerLink="/user/list"
-							class="kt-menu__link kt-menu__toggle ng-star-inserted">
-							<i
-								class="kt-menu__link-bullet kt-menu__link-bullet&#45;&#45;dot ng-star-inserted"><span
-							></span></i><span
-							class="kt-menu__link-text ng-star-inserted">Listagem</span>
-						</a>
-						</li>
-
-						<li data-placement="right"
-							class="kt-menu__item kt-menu__item&#45;&#45;submenu ng-star-inserted" aria-haspopup="true"
-							data-ktmenu-submenu-toggle="hover"><a
-							routerLink="/user/form"
-							class="kt-menu__link kt-menu__toggle ng-star-inserted">
-							<i
-								class="kt-menu__link-bullet kt-menu__link-bullet&#45;&#45;dot ng-star-inserted"><span
-							></span></i><span
-							class="kt-menu__link-text ng-star-inserted">Cadastrar</span>
-						</a>
-						</li>
-					</ul>
-				</div>
-			</li>
-
-			<li data-placement="right"
-				class="kt-menu__item kt-menu__item&#45;&#45;active kt-menu__item&#45;&#45;here ng-star-inserted" aria-haspopup="true"
-				data-ktmenu-submenu-toggle="hover"><a
-				class="kt-menu__link kt-menu__toggle ng-star-inserted"
-				href="/metronic/preview/angular/demo1/dashboard"><i
-				class="kt-menu__link-icon flaticon2-architecture-and-city ng-star-inserted"></i>
-				<span class="kt-menu__link-text ng-star-inserted">Dashboard</span>
-			</a></li>
-
-			<li data-placement="right" class="kt-menu__item ng-star-inserted" aria-haspopup="true"
-				data-ktmenu-submenu-toggle="hover"><a
-				class="kt-menu__link kt-menu__toggle ng-star-inserted"
-				href="/metronic/preview/angular/demo1/builder"><i
-				class="kt-menu__link-icon flaticon2-expand ng-star-inserted"></i><span
-				class="kt-menu__link-text ng-star-inserted">Layout Builder</span></a>
-			</li>-->
 		</ul>
 	</div>
 </div>
@@ -72,33 +20,33 @@
 
 <ng-template #menuGroup let-submenu="submenu" let-text="text">
 	<li data-placement="right" class="kt-menu__item" aria-haspopup="true"
-		data-ktmenu-submenu-toggle="hover" >
+		data-ktmenu-submenu-toggle="hover">
 		<a class="kt-menu__link kt-menu__toggle">
 			<span class="kt-menu__link-text">{{text}}</span>
 			<i class="kt-menu__ver-arrow la la-angle-right"></i>
 		</a>
-		<ng-container *ngFor="let submn of submenu">
-			<div class="kt-menu__submenu">
-				<ul class="kt-menu__subnav">
+		<div class="kt-menu__submenu">
+			<ul class="kt-menu__subnav">
+				<ng-container *ngFor="let submn of submenu">
 					<li data-placement="right" class="kt-menu__item kt-menu__item--submenu" aria-haspopup="true"
 						data-ktmenu-submenu-toggle="hover">
 						<ng-container [ngTemplateOutlet]="menuwrapper"
 									  [ngTemplateOutletContext]="{menuData:submn}"></ng-container>
 					</li>
-				</ul>
-			</div>
-		</ng-container>
+				</ng-container>
+			</ul>
+		</div>
 	</li>
 </ng-template>
 <ng-template #menuSingle let-menu="menu">
-	<li data-placement="right" class="kt-menu__item  kt-menu__item--here" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+	<li data-placement="right" class="kt-menu__item" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
 		<ng-container [ngTemplateOutlet]="menuwrapper" [ngTemplateOutletContext]="{menuData: menu}"></ng-container>
 	</li>
 </ng-template>
 
-<ng-template #menuwrapper let-menuData="menuData">
+<ng-template #menuwrapper let-menuData="menuData" let-item="item">
 	<a [routerLink]="menuData.link"
-	   class="kt-menu__link kt-menu__toggle">
+	   class="kt-menu__link kt-menu__toggle" (click)="activeMenu($event)">
 		<span class="kt-menu__link-text ng-star-inserted">{{menuData.text}}</span>
 	</a>
 </ng-template>

@@ -1,4 +1,12 @@
-import {AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild, ViewEncapsulation} from '@angular/core';
+import {
+	AfterViewInit,
+	Component,
+	ElementRef,
+	OnInit,
+	Renderer2,
+	ViewChild,
+	ViewEncapsulation
+} from '@angular/core';
 import {MenuOptions} from "../../layout-partials/index";
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {filter} from "rxjs/operators";
@@ -11,7 +19,6 @@ import {filter} from "rxjs/operators";
 })
 export class MenuComponent implements OnInit, AfterViewInit {
 	@ViewChild('asideMenu', {static: false}) asideMenu: ElementRef;
-
 	currentRouteUrl: string = '';
 	insideTm: any;
 	outsideTm: any;
@@ -70,8 +77,6 @@ export class MenuComponent implements OnInit, AfterViewInit {
 			// tslint:disable-next-line:max-line-length
 			this.render.setAttribute(this.asideMenu.nativeElement, 'data-ktmenu-dropdown-timeout', objectPath.get(config, 'aside.menu.submenu.dropdown.hover-timeout'));
 		}*/
-
-		console.log(this.currentRouteUrl);
 	}
 
 	ngAfterViewInit() {
@@ -119,6 +124,21 @@ export class MenuComponent implements OnInit, AfterViewInit {
 					this.render.addClass(document.body, 'kt-aside--minimize');
 				}
 			}, 100);
+		}
+	}
+
+	activeMenu(item){
+		this.desactiveMenu();
+		const el = this.render.parentNode(item.currentTarget);
+		this.render.addClass(el,'kt-menu__item--here');
+		this.render.addClass(el,'kt-menu__item--active');
+	}
+
+	private desactiveMenu(){
+		let activeItem = this.asideMenu.nativeElement.querySelector(".kt-menu__item--here");
+		if(activeItem){
+			 this.render.removeClass(activeItem,'kt-menu__item--active');
+			 this.render.removeClass(activeItem,'kt-menu__item--here');
 		}
 	}
 }
