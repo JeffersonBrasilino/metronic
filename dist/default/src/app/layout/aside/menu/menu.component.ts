@@ -8,8 +8,7 @@ import {
 	ViewEncapsulation
 } from '@angular/core';
 import {MenuOptions} from "../../layout-partials/index";
-import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
-import {filter} from "rxjs/operators";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
 	selector: 'app-menu',
@@ -18,10 +17,11 @@ import {filter} from "rxjs/operators";
 	encapsulation: ViewEncapsulation.None
 })
 export class MenuComponent implements OnInit, AfterViewInit {
-	@ViewChild('asideMenu', {static: false}) asideMenu: ElementRef;
+	@ViewChild('asm', {static: true}) asideMenu: ElementRef;
 	currentRouteUrl: string = '';
 	insideTm: any;
 	outsideTm: any;
+	menuInstance:any;
 	menuOptions: MenuOptions = {
 		// vertical scroll
 		scroll: false,
@@ -54,7 +54,14 @@ export class MenuComponent implements OnInit, AfterViewInit {
 			]
 		},
 		{
-			text:'Login', link:'/auth/signin'
+			text: "Usuários 2",
+			submenu: [
+				{text: 'Cadastrar', link: "/user/form"},
+				{text: 'Listar', link: "/user/list"}
+			]
+		},
+		{
+			text: 'Login', link: '/user/list'
 		}
 	];
 
@@ -62,24 +69,21 @@ export class MenuComponent implements OnInit, AfterViewInit {
 	}
 
 	ngOnInit() {
-
 		this.currentRouteUrl = this.router.url.split(/[?#]/)[0];
-		this.router.events
-			.pipe(filter(event => event instanceof NavigationEnd))
-			.subscribe(event => this.currentRouteUrl = this.router.url.split(/[?#]/)[0]);
-
-		/*if (objectPath.get(config, 'aside.menu.dropdown') !== true && objectPath.get(config, 'aside.self.fixed')) {
-			this.render.setAttribute(this.asideMenu.nativeElement, 'data-ktmenu-scroll', '1');
-		}
-
-		if (objectPath.get(config, 'aside.menu.dropdown')) {
-			this.render.setAttribute(this.asideMenu.nativeElement, 'data-ktmenu-dropdown', '1');
-			// tslint:disable-next-line:max-line-length
-			this.render.setAttribute(this.asideMenu.nativeElement, 'data-ktmenu-dropdown-timeout', objectPath.get(config, 'aside.menu.submenu.dropdown.hover-timeout'));
-		}*/
 	}
 
 	ngAfterViewInit() {
+		this.menuInstance = new KTMenu(this.asideMenu.nativeElement, {
+			submenu: {
+				desktop: 'accordion',
+				tablet: 'accordion',
+				mobile: 'accordion'
+			},
+			accordion: {
+				slideSpeed: 200, // accordion toggle slide speed in milliseconds
+				expandAll: false // allow having multiple expanded accordions in the menu
+			}
+		});
 	}
 
 	/**
@@ -127,18 +131,8 @@ export class MenuComponent implements OnInit, AfterViewInit {
 		}
 	}
 
-	activeMenu(item){
-		this.desactiveMenu();
+	activeMenu(item) {
 		const el = this.render.parentNode(item.currentTarget);
-		this.render.addClass(el,'kt-menu__item--here');
-		this.render.addClass(el,'kt-menu__item--active');
-	}
-
-	private desactiveMenu(){
-		let activeItem = this.asideMenu.nativeElement.querySelector(".kt-menu__item--here");
-		if(activeItem){
-			 this.render.removeClass(activeItem,'kt-menu__item--active');
-			 this.render.removeClass(activeItem,'kt-menu__item--here');
-		}
+		this.menuInstance.setActiveItem(el);
 	}
 }

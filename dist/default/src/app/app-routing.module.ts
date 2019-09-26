@@ -17,19 +17,19 @@ const routes: Routes = [
 	{
 		path: "",
 		component: BaseComponent,
-		canActivate:[AuthGuard],
-		resolve:{
-			menu:MenuResolverService
+		canActivate: [AuthGuard],
+		resolve: {
+			menu: MenuResolverService
 		},
-		children:[
+		children: [
 			{
 				path: "",
 				redirectTo: '/auth/signin',
-				pathMatch:'full'
+				pathMatch: 'full'
 			},
 			{
 				path: "user",
-				canActivateChild:[AuthGuard],
+				canActivateChild: [AuthGuard],
 				loadChildren: () =>
 					import("./pages/users/users.module").then(mod => mod.UsersModule)
 			}

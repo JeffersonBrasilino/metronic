@@ -1,5 +1,5 @@
 <div class="kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_aside_menu_wrapper">
-	<div #asideMenu ktMenu [options]="menuOptions" [ngStyle]="{'max-height': '90vh', 'position': 'relative'}"
+	<div #asm [ngStyle]="{'max-height': '90vh', 'position': 'relative'}"
 		 id="kt_aside_menu"
 		 class="kt-aside-menu" (mouseenter)="mouseEnter($event)" (mouseleave)="mouseLeave($event)"
 		 [perfectScrollbar]="{wheelPropagation: false}">
@@ -19,7 +19,7 @@
 </ng-template>
 
 <ng-template #menuGroup let-submenu="submenu" let-text="text">
-	<li data-placement="right" class="kt-menu__item" aria-haspopup="true"
+	<li data-placement="right" class="kt-menu__item kt-menu__item--submenu" aria-haspopup="true"
 		data-ktmenu-submenu-toggle="hover">
 		<a class="kt-menu__link kt-menu__toggle">
 			<span class="kt-menu__link-text">{{text}}</span>
@@ -28,7 +28,7 @@
 		<div class="kt-menu__submenu">
 			<ul class="kt-menu__subnav">
 				<ng-container *ngFor="let submn of submenu">
-					<li data-placement="right" class="kt-menu__item kt-menu__item--submenu" aria-haspopup="true"
+					<li data-placement="right" class="kt-menu__item" aria-haspopup="true"
 						data-ktmenu-submenu-toggle="hover">
 						<ng-container [ngTemplateOutlet]="menuwrapper"
 									  [ngTemplateOutletContext]="{menuData:submn}"></ng-container>
