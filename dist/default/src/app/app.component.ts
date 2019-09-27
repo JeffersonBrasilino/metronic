@@ -35,10 +35,10 @@ export class AppComponent implements OnInit, OnDestroy {
 		this._router.events.subscribe((event: Event) => {
 			if(event instanceof NavigationStart){
 				/*this.ms.open({type:'loading'});*/
-				this._loadingBar.start();
+				/*this._loadingBar.start();*/
 			}if(event instanceof NavigationEnd){
 				this.ms.close();
-				this._loadingBar.complete();
+				/*this._loadingBar.complete();*/
 			}
 			this._rd.markForCheck();
 		});

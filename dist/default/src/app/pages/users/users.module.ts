@@ -5,13 +5,21 @@ import {UsersRoutingModule} from './users-routing.module';
 import {ListComponent} from './list/list.component';
 import {FormComponent} from './form/form.component';
 import {NgSelectModule} from "@ng-select/ng-select";
+import {MatSortModule, MatTableModule} from "@angular/material";
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {SubheaderComponent} from "../../layout/subheader/subheader.component";
+
 
 @NgModule({
-	declarations: [ListComponent, FormComponent],
+	declarations: [SubheaderComponent, ListComponent, FormComponent],
 	imports: [
 		CommonModule,
 		UsersRoutingModule,
-		NgSelectModule
+		NgSelectModule,
+		/*datatable*/
+		MatTableModule,
+		MatSortModule,
+		NgbModule
 	],
 	exports: [NgSelectModule]
 })

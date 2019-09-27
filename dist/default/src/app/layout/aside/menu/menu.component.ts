@@ -22,29 +22,6 @@ export class MenuComponent implements OnInit, AfterViewInit {
 	insideTm: any;
 	outsideTm: any;
 	menuInstance:any;
-	menuOptions: MenuOptions = {
-		// vertical scroll
-		scroll: false,
-
-		// submenu setup
-		submenu: {
-			desktop: {
-				// by default the menu mode set to accordion in desktop mode
-				default: 'dropdown',
-				state: {
-					body: 'kt-aside--minimize',
-					mode: 'dropdown'
-				}
-			},
-			tablet: 'accordion', // menu set to accordion in tablet mode
-			mobile: 'accordion' // menu set to accordion in mobile mode
-		},
-
-		// accordion setup
-		accordion: {
-			expandAll: false // allow having multiple expanded accordions in the menu
-		}
-	};
 	menu = [
 		{
 			text: "Usuários",

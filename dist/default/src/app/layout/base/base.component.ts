@@ -1,4 +1,6 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Event, NavigationEnd, NavigationStart, Router} from "@angular/router";
+import {LoadingBarService} from "@ngx-loading-bar/core";
 
 @Component({
   selector: 'app-base',
@@ -8,7 +10,17 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 })
 export class BaseComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _router: Router, private _rd: ChangeDetectorRef, private _loadingBar: LoadingBarService) {
+	  this._router.events.subscribe((event: Event) => {
+		  if(event instanceof NavigationStart){
+			  /*this.ms.open({type:'loading'});*/
+			  this._loadingBar.start();
+		  }if(event instanceof NavigationEnd){
+			  this._loadingBar.complete();
+		  }
+		  this._rd.markForCheck();
+	  });
+  }
 
   ngOnInit() {}
 

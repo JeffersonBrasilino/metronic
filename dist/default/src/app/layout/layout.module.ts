@@ -15,6 +15,7 @@ import {NotFoundPageComponent} from "../pages/not-found-page/not-found-page.comp
 import {LayoutPartialsModule} from "./layout-partials/layout-partials.module";
 import { SubheaderComponent } from './subheader/subheader.component';
 import {SharedModule} from "../shared/shared.module";
+import {LoadingBarModule} from "@ngx-loading-bar/core";
 
 @NgModule({
 	declarations: [
@@ -26,7 +27,7 @@ import {SharedModule} from "../shared/shared.module";
 		HeaderComponent,
 		FooterComponent,
 		NotFoundPageComponent,
-		SubheaderComponent,
+		/*SubheaderComponent*/
 	],
 	imports: [
 		CommonModule,
@@ -34,7 +35,8 @@ import {SharedModule} from "../shared/shared.module";
 		PerfectScrollbarModule,
 		InlineSVGModule,
 		NavigationRoutingModule,
-		SharedModule
+		SharedModule,
+		LoadingBarModule
 	],
 	exports: []
 })

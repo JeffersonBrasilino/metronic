@@ -1,15 +1,20 @@
-import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-subheader',
-  templateUrl: './subheader.component.html',
-  styleUrls: ['./subheader.component.scss']
+	selector: 'app-subheader',
+	templateUrl: './subheader.component.html',
+	styleUrls: ['./subheader.component.scss']
 })
 export class SubheaderComponent implements OnInit {
 
-  constructor() { }
+	@Input() title: string = 'Component';
+	@Input() linkAddButton;
+	@Input() linkReturnButton;
 
-  ngOnInit() {
-  }
+	constructor() {
+	}
+
+	ngOnInit() {
+	}
 
 }

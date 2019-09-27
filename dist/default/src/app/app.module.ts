@@ -12,7 +12,6 @@ import {AppRoutingModule} from './app-routing.module';
 import {LayoutModule} from "./layout/layout.module";
 
 import {AuthModule} from "./pages/auth/auth.module";
-import {LoadingBarModule} from "@ngx-loading-bar/core";
 
 @NgModule({
 	declarations: [AppComponent],
@@ -22,8 +21,7 @@ import {LoadingBarModule} from "@ngx-loading-bar/core";
 		AppRoutingModule,
 		HttpClientModule,
 		LayoutModule,
-		AuthModule,
-		LoadingBarModule
+		AuthModule
 	],
 	exports: [],
 	providers: [],
