@@ -13,9 +13,9 @@ import {FooterComponent} from './footer/footer.component';
 import {NavigationRoutingModule} from "./navigation-routing.module";
 import {NotFoundPageComponent} from "../pages/not-found-page/not-found-page.component";
 import {LayoutPartialsModule} from "./layout-partials/layout-partials.module";
-import { SubheaderComponent } from './subheader/subheader.component';
 import {SharedModule} from "../shared/shared.module";
 import {LoadingBarModule} from "@ngx-loading-bar/core";
+import {LoadingContentIndicatorModule} from "../shared/components/loading-content-indicator/loading-content-indicator.module";
 
 @NgModule({
 	declarations: [
@@ -27,7 +27,6 @@ import {LoadingBarModule} from "@ngx-loading-bar/core";
 		HeaderComponent,
 		FooterComponent,
 		NotFoundPageComponent,
-		/*SubheaderComponent*/
 	],
 	imports: [
 		CommonModule,
@@ -36,7 +35,8 @@ import {LoadingBarModule} from "@ngx-loading-bar/core";
 		InlineSVGModule,
 		NavigationRoutingModule,
 		SharedModule,
-		LoadingBarModule
+		LoadingBarModule,
+		LoadingContentIndicatorModule
 	],
 	exports: []
 })

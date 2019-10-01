@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, EventEmitter, OnChanges, OnInit, Output, Renderer2, ViewChild} from '@angular/core';
 import {MatSort, MatTableDataSource} from "@angular/material";
 import {ModalService} from "../../../shared/components/modal/modal.service";
+import {LoadingContentIndicatorService} from "../../../shared/components/loading-content-indicator/loading-content-indicator.service";
 
 @Component({
 	selector: 'list',
@@ -9,7 +10,7 @@ import {ModalService} from "../../../shared/components/modal/modal.service";
 })
 export class ListComponent implements OnInit {
 	page = 1;
-	@ViewChild(MatSort,{static: true}) sort: MatSort;
+	@ViewChild(MatSort, {static: true}) sort: MatSort;
 	dataSource: MatTableDataSource<any>;
 	displayedColumns = ['position', 'name', 'weight', 'symbol'];
 	data = [
@@ -22,14 +23,20 @@ export class ListComponent implements OnInit {
 		{position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
 		{position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
 	];
-	constructor(private modal: ModalService, private _render:Renderer2) {
+
+	constructor(private modal: ModalService, private _loadingContentIndicator: LoadingContentIndicatorService) {
 		this.dataSource = new MatTableDataSource(this.data);
 	}
 
 	ngOnInit() {
 		this.dataSource.sort = this.sort;
 	}
-	hue(pageNum){
-		this.modal.open({type:"default",modalOptions:{backdrop:'static'}});
+
+	hue(pageNum) {
+		this._loadingContentIndicator.show();
+
+		setTimeout(()=>{
+			this._loadingContentIndicator.hide();
+		},3000)
 	}
 }

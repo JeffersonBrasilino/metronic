@@ -6,7 +6,7 @@
 		</div>
 	</div>
 	<div class="kt-portlet__body">
-		<div class="example-container mat-elevation-z8">
+		<div class="mat-table__wrapper">
 			<table mat-table [dataSource]="dataSource" matSort matSortActive="position" matSortDirection="asc">
 				<!-- Position Column -->
 				<ng-container matColumnDef="position">
@@ -36,8 +36,10 @@
 				<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 			</table>
 		</div>
-		<div class="kt-datatable__pager kt-datatable--paging-loaded" style="margin-top: 50px">
-			<ngb-pagination [collectionSize]="30" [page]="1" [pageSize]="5" (pageChange)="hue($event)"></ngb-pagination>
+		<div class="mat-table__bottom">
+			<div class="kt-datatable__pager kt-datatable--paging-loaded" style="margin-top: 30px">
+				<ngb-pagination [collectionSize]="30" [page]="1" [pageSize]="5" (pageChange)="hue($event)"></ngb-pagination>
+			</div>
 		</div>
 	</div>
 </div>
