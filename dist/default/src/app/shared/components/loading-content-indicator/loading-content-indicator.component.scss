@@ -1,0 +1,28 @@
+.block{
+	text-align: center;
+	height: 50px;
+	position: fixed;
+	top: 45%;
+	right: 48%;
+}
+.block > .modal-content > .modal-body {
+	text-align: -webkit-center;
+	text-align: -moz-center;
+
+}
+
+.block > .modal-content{
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.visible {
+	visibility: visible;
+	opacity: 1;
+	transition: opacity 0.1s linear;
+}
+
+.hidden {
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0s 0.1s, opacity 0.1s linear;
+}
