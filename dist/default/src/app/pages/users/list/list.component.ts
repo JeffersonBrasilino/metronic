@@ -1,42 +1,56 @@
-import {AfterViewInit, Component, EventEmitter, OnChanges, OnInit, Output, Renderer2, ViewChild} from '@angular/core';
-import {MatSort, MatTableDataSource} from "@angular/material";
-import {ModalService} from "../../../shared/components/modal/modal.service";
+import {
+	ChangeDetectorRef,
+	Component, OnDestroy,
+	OnInit,
+	ViewChild
+} from '@angular/core';
+import {MatSort} from "@angular/material";
 import {LoadingContentIndicatorService} from "../../../shared/components/loading-content-indicator/loading-content-indicator.service";
+import {UsersService} from "../users.service";
+import {LayoutService} from "../../../layout/layout.service";
 
 @Component({
 	selector: 'list',
 	templateUrl: './list.component.html',
 	styleUrls: ['./list.component.scss']
 })
-export class ListComponent implements OnInit {
+export class ListComponent implements OnInit,OnDestroy {
 	page = 1;
+	dataSource;
 	@ViewChild(MatSort, {static: true}) sort: MatSort;
-	dataSource: MatTableDataSource<any>;
-	displayedColumns = ['position', 'name', 'weight', 'symbol'];
-	data = [
-		{position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-		{position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-		{position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-		{position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-		{position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-		{position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-		{position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-		{position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-	];
+	displayedColumns = ['id', 'userId', 'title', 'body'];
 
-	constructor(private modal: ModalService, private _loadingContentIndicator: LoadingContentIndicatorService) {
-		this.dataSource = new MatTableDataSource(this.data);
+	constructor(
+		private _loadingContentIndicator: LoadingContentIndicatorService,
+		private _service: UsersService,
+		private _dr: ChangeDetectorRef,
+		private _layoutService: LayoutService
+	) {
+		this._layoutService.config = {
+			subHeader: {
+				title: 'Usuario',
+				linkAddButton: '/user/form'
+			}
+		}
 	}
 
 	ngOnInit() {
-		this.dataSource.sort = this.sort;
+		this.getDataList(1);
 	}
 
-	hue(pageNum) {
+	getDataList(pageNum) {
 		this._loadingContentIndicator.show();
+		this._service.getPosts(pageNum)
+			.subscribe(dt => {
+				this.dataSource = dt.data;
+				this._dr.markForCheck();
+				setTimeout(() => {
+					this._loadingContentIndicator.hide();
+				}, 300);
+			});
+	}
 
-		setTimeout(()=>{
-			this._loadingContentIndicator.hide();
-		},3000)
+	ngOnDestroy(): void {
+
 	}
 }

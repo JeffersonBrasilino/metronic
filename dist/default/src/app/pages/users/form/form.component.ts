@@ -1,4 +1,5 @@
-import { Component, OnInit } from "@angular/core";
+import {Component, OnInit} from "@angular/core";
+import {LayoutService} from "../../../layout/layout.service";
 
 @Component({
 	selector: "app-form",
@@ -6,7 +7,15 @@ import { Component, OnInit } from "@angular/core";
 	styleUrls: ["./form.component.scss"]
 })
 export class FormComponent implements OnInit {
-	constructor() {}
+	constructor(private _layoutService: LayoutService) {
+		this._layoutService.config = {
+			subHeader: {
+				title: 'Usuario',
+				linkReturnButton: '/user/list'
+			}
+		}
+	}
 
-	ngOnInit() {}
+	ngOnInit() {
+	}
 }

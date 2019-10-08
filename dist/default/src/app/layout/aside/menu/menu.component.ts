@@ -7,7 +7,6 @@ import {
 	ViewChild,
 	ViewEncapsulation
 } from '@angular/core';
-import {MenuOptions} from "../../layout-partials/index";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({

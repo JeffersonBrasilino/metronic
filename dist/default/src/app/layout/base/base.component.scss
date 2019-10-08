@@ -4,5 +4,12 @@ app-base {
 	.kt-grid--root {
 		height: 100%;
 	}
+	.kt-content{
+		padding: 25px 0 !important;
+	}
+
+	.kt-container{
+		padding: 0 25px !important;
+	}
 }
 

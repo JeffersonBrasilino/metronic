@@ -7,9 +7,7 @@ import {Subject} from "rxjs";
 export class LoadingContentIndicatorService {
 	private _loadingIndicatorSource = new Subject();
 	public loadingIndicatorSource$ = this._loadingIndicatorSource.asObservable();
-  constructor() {
-  	console.log('construtor do servico');
-  }
+  constructor() {}
 
   show(){
   	this._loadingIndicatorSource.next('show');

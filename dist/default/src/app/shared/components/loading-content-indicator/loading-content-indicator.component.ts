@@ -12,7 +12,6 @@ export class LoadingContentIndicatorComponent implements OnInit, OnDestroy {
 	subscription: Subscription;
 
 	constructor(private _render: Renderer2, private _loadingIndicator: LoadingContentIndicatorService) {
-		console.log('construtor do component');
 		this.subscription = this._loadingIndicator.loadingIndicatorSource$.subscribe(data=>{
 			if(data == 'show')
 				this.showModal();

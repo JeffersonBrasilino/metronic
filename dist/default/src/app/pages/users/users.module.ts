@@ -7,11 +7,11 @@ import {FormComponent} from './form/form.component';
 import {NgSelectModule} from "@ng-select/ng-select";
 import {MatSortModule, MatTableModule} from "@angular/material";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
-import {SubheaderComponent} from "../../layout/subheader/subheader.component";
+import {UsersService} from "./users.service";
 
 
 @NgModule({
-	declarations: [SubheaderComponent, ListComponent, FormComponent],
+	declarations: [ ListComponent, FormComponent],
 	imports: [
 		CommonModule,
 		UsersRoutingModule,
@@ -21,7 +21,8 @@ import {SubheaderComponent} from "../../layout/subheader/subheader.component";
 		MatSortModule,
 		NgbModule
 	],
-	exports: [NgSelectModule]
+	exports: [NgSelectModule],
+	providers:[UsersService]
 })
 export class UsersModule {
 }

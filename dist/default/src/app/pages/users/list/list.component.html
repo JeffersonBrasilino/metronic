@@ -1,4 +1,3 @@
-<app-subheader [title]="'Usuários'" [linkAddButton]="'/user/form'"></app-subheader>
 <div class="kt-portlet kt-portlet--mobile">
 	<div class="kt-portlet__head">
 		<div class="kt-portlet__head-label">
@@ -7,38 +6,40 @@
 	</div>
 	<div class="kt-portlet__body">
 		<div class="mat-table__wrapper">
-			<table mat-table [dataSource]="dataSource" matSort matSortActive="position" matSortDirection="asc">
+			<table mat-table [dataSource]="dataSource">
 				<!-- Position Column -->
-				<ng-container matColumnDef="position">
-					<th mat-header-cell *matHeaderCellDef mat-sort-header> No.</th>
-					<td mat-cell *matCellDef="let element"> {{element.position}} </td>
+				<ng-container matColumnDef="id">
+					<th mat-header-cell *matHeaderCellDef> Id</th>
+					<td mat-cell *matCellDef="let element"> {{element.id}} </td>
 				</ng-container>
 
 				<!-- Name Column -->
-				<ng-container matColumnDef="name">
-					<th mat-header-cell *matHeaderCellDef mat-sort-header> Name</th>
-					<td mat-cell *matCellDef="let element"> {{element.name}} </td>
+				<ng-container matColumnDef="userId">
+					<th mat-header-cell *matHeaderCellDef> User Id</th>
+					<td mat-cell *matCellDef="let element"> {{element.userId}} </td>
 				</ng-container>
 
 				<!-- Weight Column -->
-				<ng-container matColumnDef="weight">
-					<th mat-header-cell *matHeaderCellDef> Weight</th>
-					<td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+				<ng-container matColumnDef="title">
+					<th mat-header-cell *matHeaderCellDef> Title</th>
+					<td mat-cell *matCellDef="let element"> {{element.title}} </td>
 				</ng-container>
 
 				<!-- Symbol Column -->
-				<ng-container matColumnDef="symbol">
-					<th mat-header-cell *matHeaderCellDef> Symbol</th>
-					<td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+				<ng-container matColumnDef="body">
+					<th mat-header-cell *matHeaderCellDef> Body</th>
+					<td mat-cell *matCellDef="let element"> {{element.body}} </td>
 				</ng-container>
 
-				<tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: false"></tr><!--sticky: header fixo-->
+				<tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: false"></tr>
+				<!--sticky: header fixo-->
 				<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 			</table>
 		</div>
 		<div class="mat-table__bottom">
 			<div class="kt-datatable__pager kt-datatable--paging-loaded" style="margin-top: 30px">
-				<ngb-pagination [collectionSize]="30" [page]="1" [pageSize]="5" (pageChange)="hue($event)"></ngb-pagination>
+				<ngb-pagination [collectionSize]="30" [page]="1" [pageSize]="5"
+								(pageChange)="getDataList($event)"></ngb-pagination>
 			</div>
 		</div>
 	</div>

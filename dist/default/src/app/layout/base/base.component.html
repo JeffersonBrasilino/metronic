@@ -1,18 +1,18 @@
 <!-- begin:: Page -->
 <ng-container>
+	<header-mobile></header-mobile>
 	<div class="kt-grid kt-grid--hor kt-grid--root">
 		<ngx-loading-bar color="#3DA39B" [fixed]="false"></ngx-loading-bar>
-		<header-mobile></header-mobile>
 		<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
 			<ng-container>
 				<button class="kt-aside-close" id="kt_aside_close_btn"><i class="la la-close"></i></button>
 				<app-aside class="ng-star-inserted"></app-aside>
 			</ng-container>
 			<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
-				<loading-content-indicator></loading-content-indicator>
 				<app-header></app-header>
+				<app-subheader></app-subheader>
+				<loading-content-indicator></loading-content-indicator>
 				<div class="kt-content kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
-					<!--<app-subheader></app-subheader>-->
 					<div class="kt-container kt-grid__item kt-grid__item--fluid kt-container--fluid">
 						<router-outlet></router-outlet>
 					</div>
