@@ -28,11 +28,18 @@
 		<div class="kt-menu__submenu">
 			<ul class="kt-menu__subnav">
 				<ng-container *ngFor="let submn of submenu">
-					<li data-placement="right" class="kt-menu__item" aria-haspopup="true"
-						data-ktmenu-submenu-toggle="hover">
-						<ng-container [ngTemplateOutlet]="menuwrapper"
-									  [ngTemplateOutletContext]="{menuData:submn}"></ng-container>
-					</li>
+					<ng-container *ngIf="submn.submenu">
+						<ng-container *ngIf="submn.submenu" [ngTemplateOutlet]="menuGroup"
+									  [ngTemplateOutletContext]="{submenu: submn.submenu,text:submn.text}">
+						</ng-container>
+					</ng-container>
+					<ng-container *ngIf="!submn.submenu">
+						<li data-placement="right" class="kt-menu__item" aria-haspopup="true"
+							data-ktmenu-submenu-toggle="hover">
+							<ng-container [ngTemplateOutlet]="menuwrapper"
+										  [ngTemplateOutletContext]="{menuData:submn}"></ng-container>
+						</li>
+					</ng-container>
 				</ng-container>
 			</ul>
 		</div>

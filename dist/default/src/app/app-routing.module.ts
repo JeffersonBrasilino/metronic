@@ -28,10 +28,10 @@ const routes: Routes = [
 				pathMatch: 'full'
 			},
 			{
-				path: "user",
+				path: "gerencial",
 				canActivateChild: [AuthGuard],
 				loadChildren: () =>
-					import("./pages/users/users.module").then(mod => mod.UsersModule)
+					import("./pages/gerencial/gerencial.module").then(mod => mod.GerencialModule)
 			}
 		]
 	},

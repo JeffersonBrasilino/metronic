@@ -6,7 +6,7 @@ import {FormComponent} from "./form/form.component";
 const routes: Routes = [
 	{
 		path: '',
-		redirectTo: '/user/list',
+		redirectTo: '/gerencial/usuario/list',
 		pathMatch: 'full'
 	},
 	{

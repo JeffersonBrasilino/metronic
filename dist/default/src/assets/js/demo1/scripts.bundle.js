@@ -2358,7 +2358,6 @@ var KTMenu = function(elementId, options) {
             Plugin.resetActiveItem();
 
             var parents = KTUtil.parents(item, '.kt-menu__item--submenu') || [];
-            console.log(parents);
             for (var i = 0, len = parents.length; i < len; i++) {
                 KTUtil.addClass(KTUtil.get(parents[i]), 'kt-menu__item--open');
             }

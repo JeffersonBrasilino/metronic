@@ -5,9 +5,9 @@ import {
 	ViewChild
 } from '@angular/core';
 import {MatSort} from "@angular/material";
-import {LoadingContentIndicatorService} from "../../../shared/components/loading-content-indicator/loading-content-indicator.service";
+import {LoadingContentIndicatorService} from "../../../../shared/components/loading-content-indicator/loading-content-indicator.service";
 import {UsersService} from "../users.service";
-import {LayoutService} from "../../../layout/layout.service";
+import {LayoutService} from "../../../../layout/layout.service";
 
 @Component({
 	selector: 'list',
@@ -29,7 +29,7 @@ export class ListComponent implements OnInit,OnDestroy {
 		this._layoutService.config = {
 			subHeader: {
 				title: 'Usuario',
-				linkAddButton: '/user/form'
+				linkAddButton: '/gerencial/usuario/form'
 			}
 		}
 	}

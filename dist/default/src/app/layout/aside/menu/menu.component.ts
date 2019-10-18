@@ -7,7 +7,7 @@ import {
 	ViewChild,
 	ViewEncapsulation
 } from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
 	selector: 'app-menu',
@@ -20,20 +20,12 @@ export class MenuComponent implements OnInit, AfterViewInit {
 	currentRouteUrl: string = '';
 	insideTm: any;
 	outsideTm: any;
-	menuInstance:any;
+	menuInstance: any;
 	menu = [
 		{
-			text: "Usuários",
+			text: 'Gerencial',
 			submenu: [
-				{text: 'Cadastrar', link: "/user/form"},
-				{text: 'Listar', link: "/user/list"}
-			]
-		},
-		{
-			text: "Usuários 2",
-			submenu: [
-				{text: 'Cadastrar', link: "/user/form"},
-				{text: 'Listar', link: "/user/list"}
+				{text: 'Usuários', link: '/gerencial/usuario/list'},
 			]
 		},
 		{
