@@ -8,7 +8,8 @@
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "generate:crud": "ng g generator:crud"
   },
   "private": true,
   "dependencies": {
@@ -37,6 +38,7 @@
     "chartist": "^0.11.0",
     "classlist.js": "^1.1.20150312",
     "core-js": "^2.6.5",
+    "generator": "file:generator-2.0.0.tgz",
     "hammerjs": "^2.0.8",
     "highlight.js": "^9.15.6",
     "lodash": "^4.17.11",

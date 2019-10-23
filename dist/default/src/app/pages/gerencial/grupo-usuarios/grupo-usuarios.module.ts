@@ -2,20 +2,19 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
 import {NgSelectModule} from '@ng-select/ng-select';
-import {ListComponent} from './list/list.component';
-import {FormComponent} from './form/form.component';
 import {MatFormFieldModule, MatIconModule, MatInputModule, MatSortModule, MatTableModule} from '@angular/material';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {UsersRoutingModule} from './users-routing.module';
-import {UsersService} from './users.service';
+import {ListComponent} from './list/list.component';
+import {FormComponent} from './form/form.component';
+import {GrupoUsuariosRoutingModule} from './grupo-usuarios-routing.module';
+import {GrupoUsuariosService} from './grupo-usuarios.service';
 import {ReactiveFormsModule} from '@angular/forms';
-
 
 @NgModule({
 	declarations: [ListComponent, FormComponent],
 	imports: [
 		CommonModule,
-		UsersRoutingModule,
+		GrupoUsuariosRoutingModule,
 		NgSelectModule,
 		/*datatable*/
 		MatTableModule,
@@ -28,7 +27,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 		NgbModule,
 	],
 	exports: [NgSelectModule],
-	providers: [UsersService]
+	providers: [GrupoUsuariosService]
 })
-export class UsersModule {
+export class GrupoUsuariosModule {
 }

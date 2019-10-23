@@ -19,8 +19,7 @@
 </ng-template>
 
 <ng-template #menuGroup let-submenu="submenu" let-text="text">
-	<li data-placement="right" class="kt-menu__item kt-menu__item--submenu" aria-haspopup="true"
-		data-ktmenu-submenu-toggle="hover">
+	<li data-placement="right" class="kt-menu__item kt-menu__item--submenu" aria-haspopup="true">
 		<a class="kt-menu__link kt-menu__toggle">
 			<span class="kt-menu__link-text">{{text}}</span>
 			<i class="kt-menu__ver-arrow la la-angle-right"></i>
@@ -35,7 +34,7 @@
 					</ng-container>
 					<ng-container *ngIf="!submn.submenu">
 						<li data-placement="right" class="kt-menu__item" aria-haspopup="true"
-							data-ktmenu-submenu-toggle="hover">
+							>
 							<ng-container [ngTemplateOutlet]="menuwrapper"
 										  [ngTemplateOutletContext]="{menuData:submn}"></ng-container>
 						</li>
@@ -46,13 +45,13 @@
 	</li>
 </ng-template>
 <ng-template #menuSingle let-menu="menu">
-	<li data-placement="right" class="kt-menu__item" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+	<li data-placement="right" class="kt-menu__item" aria-haspopup="true" >
 		<ng-container [ngTemplateOutlet]="menuwrapper" [ngTemplateOutletContext]="{menuData: menu}"></ng-container>
 	</li>
 </ng-template>
 
 <ng-template #menuwrapper let-menuData="menuData" let-item="item">
-	<a [routerLink]="menuData.link"
+	<a [routerLink]="menuData.link"  routerLinkActive="active"
 	   class="kt-menu__link kt-menu__toggle" (click)="activeMenu($event)">
 		<span class="kt-menu__link-text ng-star-inserted">{{menuData.text}}</span>
 	</a>

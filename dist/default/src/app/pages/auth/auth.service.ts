@@ -10,13 +10,10 @@ export class AuthService extends BaseHttpService {
 	usePath = "/auth";
 
 	login(user) {
-		return new Observable(
-			subscriber=>{
-				subscriber.next(true);
-			});
-		/*return this.post('/signin', user).pipe(
+		return this.post('/signin', user).pipe(
 			take(1),
 			map((res)=>{
+				console.log(res);
 				let retorno = true;
 				if(res.status == 'success'){
 					if(res.data.token != 'null'){
@@ -29,6 +26,6 @@ export class AuthService extends BaseHttpService {
 				}
 				return retorno;
 			})
-		);*/
+		);
 	}
 }

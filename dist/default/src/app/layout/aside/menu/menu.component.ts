@@ -38,6 +38,9 @@ export class MenuComponent implements OnInit, AfterViewInit {
 
 	ngOnInit() {
 		this.currentRouteUrl = this.router.url.split(/[?#]/)[0];
+		this._route.data.subscribe((res)=>{
+			console.log(res);
+		})
 	}
 
 	ngAfterViewInit() {

@@ -17,7 +17,6 @@ const routes: Routes = [
 	{
 		path: "",
 		component: BaseComponent,
-		canActivate: [AuthGuard],
 		resolve: {
 			menu: MenuResolverService
 		},
@@ -29,7 +28,7 @@ const routes: Routes = [
 			},
 			{
 				path: "gerencial",
-				canActivateChild: [AuthGuard],
+				canActivate: [AuthGuard],
 				loadChildren: () =>
 					import("./pages/gerencial/gerencial.module").then(mod => mod.GerencialModule)
 			}

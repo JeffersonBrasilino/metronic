@@ -40,8 +40,9 @@ export class SigninComponent implements OnInit {
 			.subscribe((res) => {
 					if (res == true) {
 						this.loginStatus = true;
-						this._router.navigateByUrl('/user/list');
+						this._router.navigateByUrl('/gerencial/usuario/list');
 					} else {
+						this._modalService.close();
 						this.loginStatus = false;
 					}
 				},

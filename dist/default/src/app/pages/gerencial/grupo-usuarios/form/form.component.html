@@ -1,0 +1,84 @@
+<div class="kt-portlet">
+	<!--header do container do component-->
+	<div class="kt-portlet__head">
+		<div class="kt-portlet__head-label">
+			<h3 class="kt-portlet__head-title">
+				Cadastrar Novo [GrupoUsuarios]
+			</h3>
+		</div>
+	</div>
+	<!--begin::Form-->
+	<!--formulário do component conforme as configs-->
+	<form class="kt-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+		<div class="kt-portlet__body">
+			<!--campo obrigatório-->
+			<div class="form-group row">
+				<div class="col-lg-12">
+					<mat-form-field appearance="standard">
+						<mat-label>Nome</mat-label>
+						<input matInput placeholder="Placeholder" formControlName="name">
+						<mat-error>este campo deve ser preenchido.</mat-error>
+						<mat-hint>Campo Obrigatório</mat-hint>
+					</mat-form-field>
+				</div>
+			</div>
+			<!--campo obrigatório-->
+			<div class="form-group row">
+				<div class="col-lg-6">
+					<mat-form-field appearance="standard">
+						<mat-label>Email</mat-label>
+						<input matInput placeholder="Placeholder" formControlName="email">
+						<mat-error>este campo deve ser preenchido.</mat-error>
+						<mat-hint>Campo Obrigatório</mat-hint>
+					</mat-form-field>
+				</div>
+				<!--campo obrigatório-->
+				<div class="col-lg-6">
+					<mat-form-field appearance="standard">
+						<mat-label>CPF</mat-label>
+						<input matInput placeholder="Placeholder" formControlName="cpf">
+						<mat-error>este campo deve ser preenchido.</mat-error>
+						<mat-hint>Campo Obrigatório</mat-hint>
+					</mat-form-field>
+				</div>
+			</div>
+			<!--campos dinamicos conforme a configuracao-->
+			<div formArrayName="dynamicField">
+				<button type="button" class="btn btn-default" (click)="adddynamicField()">adicionar campos</button>
+				<div *ngFor="let df of dynamicField.controls; let i=index">
+					<div class="form-group row" [formGroupName]="i">
+						<div class="form-group row">
+							<div class="col-lg-6">
+								<mat-form-field appearance="standard">
+									<mat-label>dinamicField1</mat-label>
+									<input matInput placeholder="Placeholder" formControlName="dinamicField1">
+								</mat-form-field>
+							</div>
+							<div class="col-lg-6">
+								<mat-form-field appearance="standard">
+									<mat-label>dinamicField2</mat-label>
+									<input matInput placeholder="nome" formControlName="dinamicField2">
+								</mat-form-field>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--footer do container do formulário-->
+		<div class="kt-portlet__foot">
+			<div class="kt-form__actions">
+				<div class="row">
+					<div class="col-lg-6">
+						<button type="submit" class="btn btn-primary" [disabled]="form.invalid">Save</button>
+						<!--<button type="reset" class="btn btn-secondary">Cancel</button>-->
+					</div>
+					<div class="col-lg-6 kt-align-right">
+						<button type="reset" class="btn btn-danger">Delete</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+	<!--end::Form-->
+</div>

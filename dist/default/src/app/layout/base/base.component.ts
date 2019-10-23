@@ -1,13 +1,21 @@
 import {ChangeDetectorRef, Component, OnInit, Renderer2, ViewEncapsulation} from '@angular/core';
-import {Event, NavigationEnd, NavigationStart, Router} from "@angular/router";
+import {Event, NavigationEnd, NavigationStart, Router, RouterOutlet} from "@angular/router";
 import {LoadingBarService} from "@ngx-loading-bar/core";
-import {LoadingContentIndicatorService} from "../../shared/components/loading-content-indicator/loading-content-indicator.service";
+import {animate, group, query, style, transition, trigger} from "@angular/animations";
 
 @Component({
 	selector: 'app-base',
 	templateUrl: './base.component.html',
 	styleUrls: ['./base.component.scss'],
-	encapsulation: ViewEncapsulation.None
+	encapsulation: ViewEncapsulation.None,
+	animations: [
+		trigger('routerTransition', [
+			transition('* <=> *', [
+				style({visibility: 'hidden',opacity: 0}),
+				animate('0.5s linear',style({visibility: 'visible',opacity: 1}))
+			])
+		])
+	]
 })
 export class BaseComponent implements OnInit {
 
@@ -25,6 +33,10 @@ export class BaseComponent implements OnInit {
 	}
 
 	ngOnInit() {
+	}
+
+	prepareRoute(outlet: RouterOutlet) {
+		return outlet.activatedRouteData.animation;
 	}
 }
 

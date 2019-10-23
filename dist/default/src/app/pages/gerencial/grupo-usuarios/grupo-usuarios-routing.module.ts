@@ -6,18 +6,16 @@ import {FormComponent} from "./form/form.component";
 const routes: Routes = [
 	{
 		path: '',
-		redirectTo: '/gerencial/usuario/list',
+		redirectTo: '', //adicionar link de redirect default AQUI.
 		pathMatch: 'full'
 	},
 	{
 		path: 'list',
-		component: ListComponent,
-		data:{animation: 'list'}
+		component: ListComponent
 	},
 	{
 		path: 'form',
-		component: FormComponent,
-		data:{animation: 'form'}
+		component: FormComponent
 	}
 ];
 
@@ -25,5 +23,5 @@ const routes: Routes = [
 	imports: [RouterModule.forChild(routes)],
 	exports: [RouterModule]
 })
-export class UsersRoutingModule {
+export class GrupoUsuariosRoutingModule {
 }
