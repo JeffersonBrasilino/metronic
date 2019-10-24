@@ -7,15 +7,15 @@ import {animate, style, transition, trigger} from "@angular/animations";
 	styleUrls: ['./auth.component.scss'],
 	animations: [
 		trigger('showPage', [
-			transition('* <=> *', [
-				style({visibility: 'hidden',opacity: 0}),
-				animate('0.3s linear',style({visibility: 'visible',opacity: 1}))
+			transition(':enter', [
+				style({visibility: 'hidden', opacity: 0}),
+				animate('0.5s linear',style({visibility: 'visible', opacity: 1}))
 			])
 		])
 	]
 })
 export class AuthComponent implements OnInit {
-	show = false
+	show = false;
 
 	constructor() { }
 

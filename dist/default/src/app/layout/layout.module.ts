@@ -18,6 +18,7 @@ import {LoadingBarModule} from "@ngx-loading-bar/core";
 import {LoadingContentIndicatorModule} from "../shared/components/loading-content-indicator/loading-content-indicator.module";
 import {SubheaderComponent} from "./subheader/subheader.component";
 import {LayoutService} from "./layout.service";
+import { SplashScreenComponent } from './splash-screen/splash-screen.component';
 
 @NgModule({
 	declarations: [
@@ -29,7 +30,8 @@ import {LayoutService} from "./layout.service";
 		HeaderComponent,
 		FooterComponent,
 		NotFoundPageComponent,
-		SubheaderComponent
+		SubheaderComponent,
+		SplashScreenComponent
 	],
 	imports: [
 		CommonModule,
@@ -42,7 +44,7 @@ import {LayoutService} from "./layout.service";
 		LoadingContentIndicatorModule
 	],
 	providers:[LayoutService],
-	exports: []
+	exports: [SplashScreenComponent]
 })
 export class LayoutModule {
 }
