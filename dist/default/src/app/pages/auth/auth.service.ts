@@ -13,7 +13,6 @@ export class AuthService extends BaseHttpService {
 		return this.post('/signin', user).pipe(
 			take(1),
 			map((res)=>{
-				console.log(res);
 				let retorno = true;
 				if(res.status == 'success'){
 					if(res.data.token != 'null'){
@@ -25,6 +24,19 @@ export class AuthService extends BaseHttpService {
 					retorno = false;
 				}
 				return retorno;
+			})
+		);
+	}
+
+	removeToken(){
+		localStorage.removeItem('token');
+	}
+
+	signup(dados): Observable<any>{
+
+		return this.post('/signup',dados).pipe(
+			map((res)=>{
+				return res;
 			})
 		);
 	}

@@ -9,7 +9,6 @@ import {delay} from "rxjs/operators";
 	selector: 'app-signin',
 	templateUrl: './signin.component.html',
 	styleUrls: ['./signin.component.scss'],
-	encapsulation: ViewEncapsulation.None,
 })
 export class SigninComponent implements OnInit {
 

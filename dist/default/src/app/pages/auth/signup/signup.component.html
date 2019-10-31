@@ -1,1 +1,70 @@
-<p>signup works!</p>
+<!--begin::Body-->
+<div class="kt-login__body">
+	<!--begin::Signin-->
+	<div class="kt-login__form">
+		<div class="kt-login__title">
+			<h3>Cadastrar</h3>
+		</div>
+		<form class="kt-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+			<!--campo obrigatório-->
+			<div class="form-group row">
+				<div class="col-lg-12">
+					<mat-form-field appearance="standard">
+						<mat-label>Nome</mat-label>
+						<input matInput placeholder="Placeholder" formControlName="nome">
+						<mat-error>este campo deve ser preenchido.</mat-error>
+						<mat-hint>Campo Obrigatório</mat-hint>
+					</mat-form-field>
+				</div>
+			</div>
+			<!--campo obrigatório-->
+			<div class="form-group row">
+				<div class="col-lg-12">
+					<mat-form-field appearance="standard">
+						<mat-label>Email</mat-label>
+						<input matInput placeholder="Placeholder" formControlName="email" (focusout)="validateNomeCompleto($event)" class="input-spinner">
+						<!--<mat-spinner diameter="20"></mat-spinner>-->
+						<mat-error *ngIf="form.get('email').errors">
+							<p *ngIf="form.get('email').errors.emailExists">Email Já Cadastrado</p>
+							<p *ngIf="form.get('email').errors.required">este campo deve ser preenchido.</p>
+						</mat-error>
+						<mat-hint>Campo Obrigatório</mat-hint>
+					</mat-form-field>
+				</div>
+			</div>
+			<!--campo obrigatório-->
+			<div class="form-group row">
+				<div class="col-lg-6">
+					<mat-form-field appearance="standard">
+						<mat-label>Login</mat-label>
+						<input matInput placeholder="Placeholder" formControlName="login">
+						<mat-error>este campo deve ser preenchido.</mat-error>
+						<mat-hint>Campo Obrigatório</mat-hint>
+					</mat-form-field>
+				</div>
+
+				<div class="col-lg-6">
+					<mat-form-field appearance="standard">
+						<mat-label>Senha</mat-label>
+						<input matInput placeholder="Placeholder" formControlName="senha" type="password">
+						<mat-error>este campo deve ser preenchido.</mat-error>
+						<mat-hint>Campo Obrigatório</mat-hint>
+					</mat-form-field>
+				</div>
+			</div>
+			<div class="kt-login__actions">
+				<button
+					type="submit"
+					id="kt_login_signin_submit"
+					class="btn btn-primary btn-elevate kt-login__btn-primary">
+					<span *ngIf="!submiting">Cadastrar</span>
+					<span *ngIf="submiting"><mat-spinner diameter="20" class="mat-spinner-loading-button"></mat-spinner></span>
+				</button>
+			</div>
+		</form>
+		<!--end::Options-->
+	</div>
+	<!--end::Signin-->
+</div>
+<!--end::Body-->
+

@@ -8,6 +8,10 @@ import {MatProgressSpinnerModule} from '@angular/material';
 import {AuthRoutingModule} from './auth-routing.module';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ModalModule} from "../../shared/components/modal/modal.module";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatIconModule} from "@angular/material/icon";
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
 	declarations: [SigninComponent, SignupComponent,AuthComponent],
@@ -15,9 +19,13 @@ import {ModalModule} from "../../shared/components/modal/modal.module";
 		CommonModule,
 		AuthRoutingModule,
 		MatProgressSpinnerModule,
-		FormsModule,
+		ModalModule,
+		/*form*/
+		MatFormFieldModule,
+		MatInputModule,
+		MatIconModule,
 		ReactiveFormsModule,
-		ModalModule
+		NgbModule,
 	]
 })
 export class AuthModule {

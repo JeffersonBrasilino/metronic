@@ -1,0 +1,19 @@
+.kt-login__actions{
+	justify-content: flex-end!important;
+}
+mat-spinner{
+	display: inline-block;
+	//margin: 0 10px 0 0;
+	vertical-align: bottom;
+}
+
+.input-spinner{
+	width:90%;
+	margin-right: 10px;
+}
+
+.mat-spinner-loading-button {
+	::ng-deep circle {
+		stroke: #fff;
+	}
+}
