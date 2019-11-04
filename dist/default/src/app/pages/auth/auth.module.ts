@@ -6,12 +6,13 @@ import {SignupComponent} from './signup/signup.component';
 import {AuthComponent} from "./auth.component";
 import {MatProgressSpinnerModule} from '@angular/material';
 import {AuthRoutingModule} from './auth-routing.module';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {ReactiveFormsModule} from "@angular/forms";
 import {ModalModule} from "../../shared/components/modal/modal.module";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
 	declarations: [SigninComponent, SignupComponent,AuthComponent],
@@ -26,6 +27,8 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 		MatIconModule,
 		ReactiveFormsModule,
 		NgbModule,
+
+		MatDialogModule
 	]
 })
 export class AuthModule {

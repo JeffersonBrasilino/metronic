@@ -1,8 +1,15 @@
-import {ChangeDetectorRef, Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {
+	ChangeDetectorRef,
+	Component,
+	OnInit,
+	TemplateRef,
+	ViewChild,
+} from '@angular/core';
 import {AbstractControl, FormArray, FormBuilder, Validators} from "@angular/forms";
 import {Observable, pipe} from "rxjs";
 import {debounceTime, delay, map, take} from "rxjs/operators";
 import {AuthService} from "../auth.service";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
 	selector: 'signup',
@@ -12,11 +19,18 @@ import {AuthService} from "../auth.service";
 export class SignupComponent implements OnInit {
 
 	submiting = false;
+	@ViewChild('dialog',{static: false}) dialogContent: TemplateRef<any>;
 
-	constructor(private _fb: FormBuilder, private _dr: ChangeDetectorRef, private _service: AuthService) {
+	constructor(
+		private _fb: FormBuilder,
+		private _dr: ChangeDetectorRef,
+		private _service: AuthService,
+		private _dialog: MatDialog
+	) {
 	}
 
-	ngOnInit() {}
+	ngOnInit() {
+	}
 
 	//formulário
 	form = this._fb.group({
@@ -28,30 +42,16 @@ export class SignupComponent implements OnInit {
 
 	//submit do formlário
 	onSubmit() {
-		this.submiting = true;
-		console.log(this.form.value);
-		this._service.signup(this.form.value).subscribe(
+		this._dialog.open(this.dialogContent,{disableClose:true});
+
+		/*this.submiting = true;
+		this._service.signup(Object.assign(this.form.value,{status:0})).subscribe(
 			(res)=>{
-				console.log(res);
 				this.submiting = false;
 				this._dr.markForCheck();
 			}
-		);
-		/*setTimeout(()=>{
-			console.log('complete');
-			this.submiting = false;
-			this._dr.markForCheck();
-		},2000);*/
-	}
+		);*/
 
-	validateNomeCompleto(e: string) {
-		/*let a = new Observable(
-			subscriber => {
-				if (this.form.value.email != 'hue')
-					this.form.controls['email'].setErrors({'emailExists': true});
-
-			}
-		).subscribe()*/
 	}
 
 }
