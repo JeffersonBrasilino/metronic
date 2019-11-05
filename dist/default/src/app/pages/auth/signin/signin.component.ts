@@ -28,29 +28,26 @@ export class SigninComponent implements OnInit {
 		password: ['jeffdrummer', Validators.required],
 	});
 
-	ngOnInit(): void {}
+	ngOnInit(): void {
+	}
 
 	login() {
-		this._modalService.open({type:'loading',modalOptions:{backdrop:'static'}});
-		this._service.login(this.loginForm.value)
-			.pipe(
-				delay(1000)
-			)
-			.subscribe((res) => {
-					if (res == true) {
-						this.loginStatus = true;
-						this._router.navigateByUrl('/gerencial/usuario/list');
-					} else {
-						this._modalService.close();
-						this.loginStatus = false;
-					}
-				},
-				(err) => {
-				},
-				() => {
-					this._dr.markForCheck();
+		this._modalService.open({type: 'loading', modalOptions: {backdrop: 'static'}});
+		this._service.login(this.loginForm.value).subscribe((res) => {
+				if (res == true) {
+					this.loginStatus = true;
+					this._router.navigateByUrl('/gerencial/usuario/list');
+				} else {
+					this._modalService.close();
+					this.loginStatus = false;
 				}
-			);
+			},
+			(err) => {
+			},
+			() => {
+				this._dr.markForCheck();
+			}
+		);
 	}
 
 }

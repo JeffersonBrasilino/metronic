@@ -54,6 +54,7 @@
 			</div>
 			<div class="kt-login__actions">
 				<button
+					[disabled]="submiting || !form.valid"
 					type="submit"
 					id="kt_login_signin_submit"
 					class="btn btn-primary btn-elevate kt-login__btn-primary">
@@ -67,20 +68,35 @@
 	<!--end::Signin-->
 </div>
 <!--end::Body-->
+
+
 <ng-template #dialog>
 	<mat-dialog-content>
-		<div style="text-align: center; width:200px; color:#646c9a">
+		<div style="text-align: center; width:200px; color:#646c9a" *ngIf="!errorMsg">
 			<i class="material-icons kt-font-primary" style="font-size: 50px!important;">check</i>
 			<h3>Sucesso!</h3><br>
 			<p>Por favor, verifique a caixa de entrada(ou span) do email cadastrado para a ativação do seu usuário.</p>
 		</div>
+
+		<div style="text-align: center; width:200px; color:#646c9a" *ngIf="errorMsg">
+			<i class="material-icons kt-font-danger" style="font-size: 50px!important;">clear</i>
+			<h3>Oops!</h3><br>
+			<p>{{errorMsg}}</p>
+		</div>
 	</mat-dialog-content>
 	<mat-dialog-actions>
-		<button style="margin: auto"
+		<button style="margin: auto" *ngIf="!errorMsg"
 			type="button"
 			mat-dialog-close
 			class="btn btn-default">
-			Ok
+			Retornar ao Login
+		</button>
+
+		<button style="margin: auto" *ngIf="errorMsg"
+				type="button"
+				mat-dialog-close
+				class="btn btn-default">
+			OK
 		</button>
 	</mat-dialog-actions>
 </ng-template>

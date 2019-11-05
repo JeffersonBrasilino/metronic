@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {BaseHttpService} from "../../core/services/base-http.service";
-import {map, take} from "rxjs/operators";
-import {Observable} from "rxjs";
+import {catchError, map, take} from "rxjs/operators";
+import {Observable, of, throwError} from "rxjs";
 
 @Injectable({
 	providedIn: 'root'
@@ -33,11 +33,6 @@ export class AuthService extends BaseHttpService {
 	}
 
 	signup(dados): Observable<any>{
-
-		return this.post('/signup',dados).pipe(
-			map((res)=>{
-				return res;
-			})
-		);
+		return this.post('/signup',dados);
 	}
 }

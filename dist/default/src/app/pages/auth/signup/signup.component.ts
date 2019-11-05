@@ -5,9 +5,7 @@ import {
 	TemplateRef,
 	ViewChild,
 } from '@angular/core';
-import {AbstractControl, FormArray, FormBuilder, Validators} from "@angular/forms";
-import {Observable, pipe} from "rxjs";
-import {debounceTime, delay, map, take} from "rxjs/operators";
+import {FormBuilder, Validators} from "@angular/forms";
 import {AuthService} from "../auth.service";
 import {MatDialog} from "@angular/material/dialog";
 
@@ -19,7 +17,8 @@ import {MatDialog} from "@angular/material/dialog";
 export class SignupComponent implements OnInit {
 
 	submiting = false;
-	@ViewChild('dialog',{static: false}) dialogContent: TemplateRef<any>;
+	errorMsg;
+	@ViewChild('dialog', {static: false}) dialogContent: TemplateRef<any>;
 
 	constructor(
 		private _fb: FormBuilder,
@@ -42,16 +41,18 @@ export class SignupComponent implements OnInit {
 
 	//submit do formlário
 	onSubmit() {
-		this._dialog.open(this.dialogContent,{disableClose:true});
-
-		/*this.submiting = true;
-		this._service.signup(Object.assign(this.form.value,{status:0})).subscribe(
-			(res)=>{
+		this._dialog.open(this.dialogContent, {disableClose: true});
+		this.submiting = true;
+		this._service.signup(Object.assign(this.form.value, {status: 0})).subscribe(
+			res => {
 				this.submiting = false;
+				if(res.status != 'success'){
+					if(res.code == 400)
+						this.errorMsg = 'Preencha o formulário corretamente.';
+				}
 				this._dr.markForCheck();
 			}
-		);*/
-
+		);
 	}
 
 }
