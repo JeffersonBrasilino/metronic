@@ -14,6 +14,7 @@ import {MatDialog} from "@angular/material/dialog";
 	templateUrl: './signup.component.html',
 	styleUrls: ['./signup.component.scss'],
 })
+//TODO: FAZER VERIFICACAO DE EMAIL NO FOCUSOUT DO CAMPO
 export class SignupComponent implements OnInit {
 
 	submiting = false;
@@ -41,16 +42,30 @@ export class SignupComponent implements OnInit {
 
 	//submit do formlário
 	onSubmit() {
-		this._dialog.open(this.dialogContent, {disableClose: true});
 		this.submiting = true;
 		this._service.signup(Object.assign(this.form.value, {status: 0})).subscribe(
 			res => {
 				this.submiting = false;
-				if(res.status != 'success'){
-					if(res.code == 400)
+				if (res.status != 'success') {
+					if (res.code == 400) {
 						this.errorMsg = 'Preencha o formulário corretamente.';
+
+					} else if (res.code == 409) {
+						if (res.data.hasEmail == true)
+							this.errorMsg = 'O E-mail informado já está sendo usado';
+
+					} else {
+						this.errorMsg = 'algo de errado aconteceu...';
+					}
+				} else {
+					this.errorMsg = null;
 				}
+			},
+			(err) => {
+			},
+			() => {
 				this._dr.markForCheck();
+				this._dialog.open(this.dialogContent, {disableClose: true});
 			}
 		);
 	}

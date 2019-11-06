@@ -32,7 +32,7 @@ export abstract class BaseHttpService {
 				return {status: 'success', data: res}
 			}),
 			catchError((err) => {
-				return of({status: 'error', code: err.status});
+				return of({status: 'error', code: err.status, data:err.error});
 			})
 		);
 	}

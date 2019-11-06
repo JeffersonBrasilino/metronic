@@ -54,8 +54,8 @@
 			</div>
 			<div class="kt-login__actions">
 				<button
-					[disabled]="submiting || !form.valid"
 					type="submit"
+					[disabled]="!form.valid || submiting"
 					id="kt_login_signin_submit"
 					class="btn btn-primary btn-elevate kt-login__btn-primary">
 					<span *ngIf="!submiting">Cadastrar</span>
@@ -86,9 +86,10 @@
 	</mat-dialog-content>
 	<mat-dialog-actions>
 		<button style="margin: auto" *ngIf="!errorMsg"
-			type="button"
-			mat-dialog-close
-			class="btn btn-default">
+				routerLink="/auth/signin"
+				type="button"
+				mat-dialog-close
+				class="btn btn-default">
 			Retornar ao Login
 		</button>
 
