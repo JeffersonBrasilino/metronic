@@ -14,11 +14,13 @@ import {MatDialog} from "@angular/material/dialog";
 	templateUrl: './signup.component.html',
 	styleUrls: ['./signup.component.scss'],
 })
-//TODO: FAZER VERIFICACAO DE EMAIL NO FOCUSOUT DO CAMPO
+//TODO: FAZER VERIFICACAO DE EMAIL NO FOCUSOUT DO CAMPO,
+//TODO: FAZER VALIDACOES DIVERSAS AQUI NO FRONT, COLOCAR TODO O CODIGO DE ENVIO E VERIFICACOES NO SERVICO.
 export class SignupComponent implements OnInit {
 
 	submiting = false;
 	errorMsg;
+	checkEmailLoading = false;
 	@ViewChild('dialog', {static: false}) dialogContent: TemplateRef<any>;
 
 	constructor(
@@ -39,6 +41,23 @@ export class SignupComponent implements OnInit {
 		login: [null, Validators.required],
 		senha: [null, Validators.required]
 	});
+
+	//check email
+	checkEmail(event) {
+		let email = event.target.value;
+		if (email) {
+			this.checkEmailLoading = true;
+			this._service.checkToken(email).subscribe(
+				res => {
+					if (res.data.email != false) {
+						this.form.get('email').setErrors(res.data);
+					}
+					this.checkEmailLoading = false;
+					this._dr.markForCheck();
+				}
+			);
+		}
+	}
 
 	//submit do formlário
 	onSubmit() {

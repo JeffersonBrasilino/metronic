@@ -35,4 +35,8 @@ export class AuthService extends BaseHttpService {
 	signup(dados): Observable<any>{
 		return this.post('/signup',dados);
 	}
+
+	checkToken(email){
+		return this.get('/checkEmail',{email:email});
+	}
 }
