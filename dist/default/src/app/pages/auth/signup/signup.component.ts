@@ -14,7 +14,7 @@ import {MatDialog} from "@angular/material/dialog";
 	templateUrl: './signup.component.html',
 	styleUrls: ['./signup.component.scss'],
 })
-//TODO: FAZER VERIFICACAO DE EMAIL NO FOCUSOUT DO CAMPO,
+//TODO: FAZER VERIFICACAO DE EMAIL NO FOCUSOUT DO CAMPO, OK
 //TODO: FAZER VALIDACOES DIVERSAS AQUI NO FRONT, COLOCAR TODO O CODIGO DE ENVIO E VERIFICACOES NO SERVICO.
 export class SignupComponent implements OnInit {
 
@@ -49,9 +49,7 @@ export class SignupComponent implements OnInit {
 			this.checkEmailLoading = true;
 			this._service.checkToken(email).subscribe(
 				res => {
-					if (res.data.email != false) {
-						this.form.get('email').setErrors(res.data);
-					}
+					this.form.get('email').setErrors(res);
 					this.checkEmailLoading = false;
 					this._dr.markForCheck();
 				}
@@ -65,23 +63,9 @@ export class SignupComponent implements OnInit {
 		this._service.signup(Object.assign(this.form.value, {status: 0})).subscribe(
 			res => {
 				this.submiting = false;
-				if (res.status != 'success') {
-					if (res.code == 400) {
-						this.errorMsg = 'Preencha o formulário corretamente.';
-
-					} else if (res.code == 409) {
-						if (res.data.hasEmail == true)
-							this.errorMsg = 'O E-mail informado já está sendo usado';
-
-					} else {
-						this.errorMsg = 'algo de errado aconteceu...';
-					}
-				} else {
-					this.errorMsg = null;
-				}
+				this.errorMsg = res.errorMsg;
 			},
-			(err) => {
-			},
+			(err) => {},
 			() => {
 				this._dr.markForCheck();
 				this._dialog.open(this.dialogContent, {disableClose: true});

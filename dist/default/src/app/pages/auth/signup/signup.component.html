@@ -25,8 +25,8 @@
 						<input matInput placeholder="Placeholder" formControlName="email" class="input-spinner" (focusout)="checkEmail($event)">
 						<mat-spinner diameter="20" *ngIf="checkEmailLoading"></mat-spinner>
 						<mat-error *ngIf="form.get('email').errors">
-							<p *ngIf="form.get('email').errors.email == true">Email Já Cadastrado</p>
-							<p *ngIf="form.get('email').errors.email == 'invalid'">Digite um E-mail válido</p>
+							<p *ngIf="form.get('email').errors.hasEmail == true">Email Já Cadastrado</p>
+							<p *ngIf="form.get('email').errors.email == true">Digite um E-mail válido</p>
 							<p *ngIf="form.get('email').errors.required">este campo deve ser preenchido.</p>
 						</mat-error>
 						<mat-hint>Campo Obrigatório</mat-hint>
