@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable, of} from "rxjs";
 import {catchError, map} from "rxjs/operators";
 import {environment} from "../../../environments/environment";
@@ -15,8 +15,11 @@ export abstract class BaseHttpService {
 	constructor(private http: HttpClient) {
 	}
 
-	protected get(path: String, data={}, usePath?: boolean, headers?: Headers): Observable<any> {
-		return this.http.get(this._MAIN_URL + this.usePath + path,{params:data}).pipe(
+	protected get(path: String, data={}, usePath: boolean=true, headers?: HttpHeaders): Observable<any> {
+		let url = this._MAIN_URL;
+		if(usePath == true) url += this.usePath;
+
+		return this.http.get(url + path,{params:data}).pipe(
 			map((res) => {
 				return {status: 'success', data: res}
 			}),
@@ -26,8 +29,11 @@ export abstract class BaseHttpService {
 		);
 	}
 
-	protected post(path: String, data={}, usePath?: boolean, headers?: HttpHeaders): Observable<any> {
-		return this.http.post(this._MAIN_URL + this.usePath + path, data).pipe(
+	protected post(path: String, data={}, usePath:boolean=true, headers?: HttpHeaders): Observable<any> {
+		let url = this._MAIN_URL;
+		if(usePath == true) url += this.usePath;
+
+		return this.http.post(url + path, data).pipe(
 			map((res) => {
 				return {status: 'success', data: res}
 			}),

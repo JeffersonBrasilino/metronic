@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {BaseHttpService} from "../../core/services/base-http.service";
 import {catchError, map, take} from "rxjs/operators";
-import {Observable, of, throwError} from "rxjs";
+import {Observable, of} from "rxjs";
 
 @Injectable({
 	providedIn: 'root'
@@ -9,7 +9,7 @@ import {Observable, of, throwError} from "rxjs";
 export class AuthService extends BaseHttpService {
 	usePath = "/auth";
 
-	login(user) {
+	login(user: object): Observable<any> {
 		return this.post('/signin', user).pipe(
 			take(1),
 			map((res) => {
@@ -32,10 +32,11 @@ export class AuthService extends BaseHttpService {
 		localStorage.removeItem('token');
 	}
 
-	signup(dados): Observable<any> {
+	signup(dados: object): Observable<any> {
 		return this.post('/signup', dados).pipe(
 			map(res => {
-				let retorno = {ok:true, errorMsg:''};
+				console.log(res);
+				let retorno = {ok: true, errorMsg: ''};
 				if (res.status != 'success') {
 					if (res.code == 400) {
 						retorno.ok = false;
@@ -46,17 +47,20 @@ export class AuthService extends BaseHttpService {
 						if (res.data.hasEmail == true)
 							retorno.errorMsg = 'O E-mail informado já está sendo usado';
 					}
+				} else {
+					// @ts-ignore
+					this.sendEmail([dados.email],'confirmação de cadastro','olá!<br> Clique no link para ativar o seu usuário<br>'+res.data.userId, res.data.userId);
 				}
 
 				return retorno;
 			}),
 			catchError(err => {
-				return of({ok:false, errorMsg:'Algo de errado aconteceu...'});
+				return of({ok: false, errorMsg: 'Algo de errado aconteceu...'});
 			})
 		);
 	}
 
-	checkToken(email): Observable<any> {
+	checkToken(email: string): Observable<any> {
 		return this.get('/checkEmail', {email: email}).pipe(
 			map(res => {
 				let retorno;
@@ -71,5 +75,14 @@ export class AuthService extends BaseHttpService {
 				return of({});
 			})
 		);
+	}
+
+	sendEmail(sentTo: Array<any>, subject: string, content: string, secret: string) {
+		this.post('/sendEmail/sendEmailSignup', {sendTo: sentTo, subject: subject, content: content, secret: secret }, false).pipe(
+			map(res => {
+				console.log(res);
+				return res;
+			})
+		).subscribe();
 	}
 }

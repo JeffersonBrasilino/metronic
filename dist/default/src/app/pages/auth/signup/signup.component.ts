@@ -23,6 +23,15 @@ export class SignupComponent implements OnInit {
 	checkEmailLoading = false;
 	@ViewChild('dialog', {static: false}) dialogContent: TemplateRef<any>;
 
+	//formulário
+	form = this._fb.group({
+		nome: ['sadasd', Validators.required],
+		email: ['jefferson.wendhel@gmail.com', Validators.required],
+		login: ['sadasd', Validators.required],
+		senha: ['sadasd', Validators.required],
+		captcha:['sadasd',Validators.required]
+	});
+
 	constructor(
 		private _fb: FormBuilder,
 		private _dr: ChangeDetectorRef,
@@ -31,16 +40,9 @@ export class SignupComponent implements OnInit {
 	) {
 	}
 
+
 	ngOnInit() {
 	}
-
-	//formulário
-	form = this._fb.group({
-		nome: [null, Validators.required],
-		email: [null, Validators.required],
-		login: [null, Validators.required],
-		senha: [null, Validators.required]
-	});
 
 	//check email
 	checkEmail(event) {
@@ -68,9 +70,14 @@ export class SignupComponent implements OnInit {
 			(err) => {},
 			() => {
 				this._dr.markForCheck();
-				this._dialog.open(this.dialogContent, {disableClose: true});
+				this._dialog.open(this.dialogContent, {disableClose: false});
 			}
 		);
+	}
+
+	//captcha
+	resolveCaptcha(val){
+		this.form.get('captcha').setValue(val);
 	}
 
 }

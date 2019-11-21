@@ -13,6 +13,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {MatDialogModule} from "@angular/material/dialog";
+import {RecaptchaModule} from "ng-recaptcha";
 
 @NgModule({
 	declarations: [SigninComponent, SignupComponent,AuthComponent],
@@ -27,8 +28,8 @@ import {MatDialogModule} from "@angular/material/dialog";
 		MatIconModule,
 		ReactiveFormsModule,
 		NgbModule,
-
-		MatDialogModule
+		MatDialogModule,
+		RecaptchaModule
 	]
 })
 export class AuthModule {

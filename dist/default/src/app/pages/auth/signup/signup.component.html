@@ -53,6 +53,11 @@
 					</mat-form-field>
 				</div>
 			</div>
+			<div class="row">
+				<div class="col-lg-6" style="transform:scale(0.8);transform-origin:0;">
+					<re-captcha (resolved)="resolveCaptcha($event)"></re-captcha>
+				</div>
+			</div>
 			<div class="kt-login__actions">
 				<button
 					type="submit"
@@ -102,5 +107,4 @@
 		</button>
 	</mat-dialog-actions>
 </ng-template>
-
 <!--routerLink="/auth/signin"-->
