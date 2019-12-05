@@ -14,6 +14,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {MatDialogModule} from "@angular/material/dialog";
 import {RecaptchaModule} from "ng-recaptcha";
+import {EmailTemplateService} from "../../shared/services/email-template/email-template.service";
 
 @NgModule({
 	declarations: [SigninComponent, SignupComponent,AuthComponent],
@@ -30,6 +31,9 @@ import {RecaptchaModule} from "ng-recaptcha";
 		NgbModule,
 		MatDialogModule,
 		RecaptchaModule
+	],
+	providers:[
+		EmailTemplateService
 	]
 })
 export class AuthModule {
