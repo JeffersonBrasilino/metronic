@@ -35,8 +35,7 @@ export class AuthService extends BaseHttpService {
 	signup(dados: object): Observable<any> {
 		return this.post('/signup', dados).pipe(
 			map(res => {
-				console.log(res);
-				let retorno = {ok: true, errorMsg: ''};
+				let retorno = {ok: true, errorMsg: '', userId: null};
 				if (res.status != 'success') {
 					if (res.code == 400) {
 						retorno.ok = false;
@@ -48,8 +47,8 @@ export class AuthService extends BaseHttpService {
 							retorno.errorMsg = 'O E-mail informado já está sendo usado';
 					}
 				} else {
-					// @ts-ignore
-					this.sendEmail([dados.email],'confirmação de cadastro','olá!<br> Clique no link para ativar o seu usuário<br>'+res.data.userId, res.data.userId);
+					retorno.ok = true;
+					retorno.userId = res.data.userId;
 				}
 
 				return retorno;
@@ -78,11 +77,23 @@ export class AuthService extends BaseHttpService {
 	}
 
 	sendEmail(sentTo: Array<any>, subject: string, content: string, secret: string) {
-		this.post('/sendEmail/sendEmailSignup', {sendTo: sentTo, subject: subject, content: content, secret: secret }, false).pipe(
+		this.post('/sendEmail/sendEmailSignup', {
+			sendTo: sentTo,
+			subject: subject,
+			content: content,
+			secret: secret
+		}, false).pipe(
 			map(res => {
-				console.log(res);
 				return res;
 			})
 		).subscribe();
+	}
+
+	activateUser(userId: string):Observable<any> {
+		return this.get('/activateUser/' + userId).pipe(
+			catchError(err => {
+				return of(err);
+			})
+		);
 	}
 }

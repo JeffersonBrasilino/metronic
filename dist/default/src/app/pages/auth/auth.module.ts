@@ -15,9 +15,10 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {MatDialogModule} from "@angular/material/dialog";
 import {RecaptchaModule} from "ng-recaptcha";
 import {EmailTemplateService} from "../../shared/services/email-template/email-template.service";
+import { ActivateUserComponent } from './activate-user/activate-user.component';
 
 @NgModule({
-	declarations: [SigninComponent, SignupComponent,AuthComponent],
+	declarations: [SigninComponent, SignupComponent,AuthComponent, ActivateUserComponent],
 	imports: [
 		CommonModule,
 		AuthRoutingModule,

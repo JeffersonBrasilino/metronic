@@ -1,0 +1,36 @@
+<!--begin::Content-->
+<!--begin::Body-->
+<div class="kt-login__body">
+	<div style="text-align: center;">
+		<div *ngIf="wait">
+			<mat-spinner diameter="40" ></mat-spinner><br>
+			<h3>Ativando Usuário...</h3>
+		</div>
+		<div  *ngIf="!wait && success == true">
+			<i class="material-icons kt-font-primary" style="font-size: 50px!important;">check</i>
+			<h3>Usuário ativado com sucesso!</h3><br>
+			<button style="margin: auto"
+					routerLink="/auth/signin"
+					type="button"
+					mat-dialog-close
+					class="btn btn-primary btn-elevate kt-login__btn-primary">
+				Retornar ao Login
+			</button>
+		</div>
+
+
+		<div  *ngIf="!wait && success == false">
+			<i class="material-icons kt-font-danger" style="font-size: 50px!important;">clear</i>
+			<h3>Erro ao ativar o usuário</h3><br>
+			<button style="margin: auto"
+					routerLink="/auth/signin"
+					type="button"
+					mat-dialog-close
+					class="btn btn-primary btn-elevate kt-login__btn-primary">
+				Retornar ao Login
+			</button>
+		</div>
+	</div>
+</div>
+<!--end::Body-->
+
